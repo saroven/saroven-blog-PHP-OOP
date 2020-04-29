@@ -56,7 +56,7 @@
               </div>
             </div>
     <?php } ?> <!--end while loopc-->
-      <!-- pagenition start -->
+      <!-- pagination start -->
       <?php
         $q = "select * from posts";
         $data = $db->select($q);
