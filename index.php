@@ -79,7 +79,9 @@
 
                             for ($i=1; $i <= $total_page; $i++) {
                               if ($page == $i) {
+
                                 $active = 'active';
+
                               }else {
                                 $active = '';
                               }
