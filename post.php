@@ -84,8 +84,9 @@
                 $catid = $result['cat'];
                 $postid = $result['id'];
                 $query_related  =  "SELECT * FROM posts
-                                    WHERE cat='$catid'
-                                    ORDER BY rand() LIMIT 6";
+                                    WHERE id NOT IN($postid)
+                                    AND cat=$catid
+                                    ORDER BY rand() LIMIT 3";
 
                 $related_post = $db->select($query_related);
 
