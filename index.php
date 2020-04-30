@@ -1,7 +1,4 @@
 <?php
-  include 'config/config.php';
-  include 'lib/Database.php';
-  include 'helper/Formate.php';
   include 'include/header.php';
   include 'include/navbar.php';
   include 'include/slider.php';

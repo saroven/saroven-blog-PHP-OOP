@@ -2,6 +2,10 @@
   include 'include/header.php';
   include 'include/navbar.php';
 ?>
+
+<?php
+
+?>
   <!--================ Hero sm Banner start =================-->
   <section class="mb-30px">
     <div class="container">
@@ -19,9 +23,6 @@
     </div>
   </section>
   <!--================ Hero sm Banner end =================-->
-
-
-
 
   <!--================ Start Blog Post Area =================-->
   <section class="blog-post-area section-margin">
