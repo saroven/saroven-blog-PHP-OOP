@@ -16,86 +16,54 @@
                 <div class="single-sidebar-widget post-category-widget">
                   <h4 class="single-sidebar-widget__title">Catgory</h4>
                   <ul class="cat-list mt-20">
+                  <?php $query = "select * from categories";
+                  $category = $db->select($query);
+                  if ($category) {
+                      while ($cat = $category->fetch_assoc()) { ?>
                     <li>
-                      <a href="#" class="d-flex justify-content-between">
-                        <p>Technology</p>
-                        <p>(03)</p>
+                      <a href="posts.php?category=<?php echo $cat['id']; ?>" class="d-flex justify-content-between">
+                        <p><?php echo $cat['title']; ?></p>
+                        <!-- <p>(03)</p> -->
                       </a>
                     </li>
-                    <li>
+                    <?php }} else { ?>
+                      <li>
                       <a href="#" class="d-flex justify-content-between">
-                        <p>Software</p>
-                        <p>(09)</p>
+                        <p>No Category Found! </p>
                       </a>
                     </li>
-                    <li>
-                      <a href="#" class="d-flex justify-content-between">
-                        <p>Lifestyle</p>
-                        <p>(12)</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="d-flex justify-content-between">
-                        <p>Shopping</p>
-                        <p>(02)</p>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" class="d-flex justify-content-between">
-                        <p>Food</p>
-                        <p>(10)</p>
-                      </a>
-                    </li>
+                    <?php }?>
                   </ul>
                 </div>
 
                 <div class="single-sidebar-widget popular-post-widget">
-                  <h4 class="single-sidebar-widget__title">Popular Post</h4>
+                  <h4 class="single-sidebar-widget__title">Recent Post</h4>
                   <div class="popular-post-list">
+
+                  <?php $query = "select * from posts limit 5";
+                  $post = $db->select($query);
+                  if ($post) {
+                      while ($data = $post->fetch_assoc()) { ?>
                     <div class="single-post-list">
                       <div class="thumb">
-                        <img class="card-img rounded-0" src="img/blog/thumb/thumb1.png" alt="">
+                        <img class="card-img rounded-0" src="admin/img/upload/<?php echo $data['image'] ?>" alt="">
                         <ul class="thumb-info">
-                          <li><a href="#">Adam Colinge</a></li>
-                          <li><a href="#">Dec 15</a></li>
+                          <li><a href="#"><?php echo $data['author']; ?></a></li>
+                          <!-- <li><a href="#">date</a></li> -->
                         </ul>
                       </div>
                       <div class="details mt-20">
                         <a href="blog-single.html">
-                          <h6>Accused of assaulting flight attendant miktake alaways</h6>
+                          <h6><?php echo $data['title']; ?></h6>
                         </a>
                       </div>
                     </div>
-                    <div class="single-post-list">
-                      <div class="thumb">
-                        <img class="card-img rounded-0" src="img/blog/thumb/thumb2.png" alt="">
-                        <ul class="thumb-info">
-                          <li><a href="#">Adam Colinge</a></li>
-                          <li><a href="#">Dec 15</a></li>
-                        </ul>
-                      </div>
-                      <div class="details mt-20">
-                        <a href="blog-single.html">
-                          <h6>Tennessee outback steakhouse the
-                            worker diagnosed</h6>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="single-post-list">
-                      <div class="thumb">
-                        <img class="card-img rounded-0" src="img/blog/thumb/thumb3.png" alt="">
-                        <ul class="thumb-info">
-                          <li><a href="#">Adam Colinge</a></li>
-                          <li><a href="#">Dec 15</a></li>
-                        </ul>
-                      </div>
-                      <div class="details mt-20">
-                        <a href="blog-single.html">
-                          <h6>Tennessee outback steakhouse the
-                            worker diagnosed</h6>
-                        </a>
-                      </div>
-                    </div>
+
+                    <?php }} else { ?>
+
+                      <p>No Category Found! </p>
+
+                    <?php }?>
                   </div>
                 </div>
 
