@@ -4,14 +4,24 @@
 ?>
 
 <?php
+    if (!isset($_GET['id']) || $_GET['id'] == null) {
+        header("Location: 404.php");
+    }else {
+        $id = $_GET['id'];
+    }
 
-?>
+    $query = "select * from posts where id=$id";
+    $post = $db->select($query);
+    if ($post) {
+        while ($result = $post->fetch_assoc()) { ?>
   <!--================ Hero sm Banner start =================-->
   <section class="mb-30px">
     <div class="container">
       <div class="hero-banner hero-banner--sm">
         <div class="hero-banner__content">
-          <h1>Post details</h1>
+          <h1>
+              <?php echo $result['title']; ?>
+            </h1>
           <nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -30,8 +40,8 @@
       <div class="row">
         <div class="col-lg-8">
             <div class="main_blog_details">
-                <img class="img-fluid" src="img/blog/blog4.png" alt="">
-                <a href="#"><h4>Cartridge Is Better Than Ever <br /> A Discount Toner</h4></a>
+                <img class="img-fluid" src="admin/img/upload/<?php echo $result['image'] ?>" alt="">
+                <a href="#"><h4><?php echo $result['title']; ?></h4></a>
                 <div class="user_details">
                   <div class="float-left">
                     <a href="#">Lifestyle</a>
@@ -40,8 +50,8 @@
                   <div class="float-right mt-sm-0 mt-3">
                     <div class="media">
                       <div class="media-body">
-                        <h5>Mark wiens</h5>
-                        <p>12 Dec, 2017 11:21 am</p>
+                        <h5><?php echo $result['author']; ?></h5>
+                        <p><?php echo $fm->formatDate($result['date']); ?></p>
                       </div>
                       <div class="d-flex">
                         <img width="42" height="42" src="img/blog/user-img.png" alt="">
@@ -49,13 +59,9 @@
                     </div>
                   </div>
                 </div>
-                <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
-                <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed MCSE training.</p>
-           <blockquote class="blockquote">
-             <p class="mb-0">MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training.</p>
-           </blockquote>
-           <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
-           <p>MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower</p>
+
+                <?php echo $result['content']; ?>
+
                <div class="news_d_footer flex-column flex-sm-row">
                  <a href="#"><span class="align-middle mr-2"><i class="ti-heart"></i></span>Lily and 4 people like this</a>
                  <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i class="ti-themify-favicon"></i></span>06 Comments</a>
@@ -67,35 +73,42 @@
              </div>
                </div>
               </div>
+              <!-- end while loop -->
 
 
           <div class="navigation-area">
-                  <div class="row">
-                      <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                          <div class="thumb">
-                              <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
-                          </div>
-                          <div class="arrow">
-                              <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-                          </div>
-                          <div class="detials">
-                              <p>Prev Post</p>
-                              <a href="#"><h4>A Discount Toner</h4></a>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                          <div class="detials">
-                              <p>Next Post</p>
-                              <a href="#"><h4>Cartridge Is Better</h4></a>
-                          </div>
-                          <div class="arrow">
-                              <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-                          </div>
-                          <div class="thumb">
-                              <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
-                          </div>
-                      </div>
-                  </div>
+             <!-- Related post  -->
+          <div class="related-posts">
+            <h2>Related Posts</h2> <br>
+            <?php
+                $catid = $result['cat'];
+                $postid = $result['id'];
+                $query_related  =  "SELECT * FROM posts
+                                    WHERE cat='$catid'
+                                    ORDER BY rand() LIMIT 6";
+
+                $related_post = $db->select($query_related);
+
+            ?>
+            <div class="row">
+            <?php
+            if ($related_post) {
+                while ($related = $related_post->fetch_assoc()) {
+            ?>
+
+              <div class="col-md-4">
+                <a href="post.php?id=<?php echo $related['id'] ; ?>"><img src="admin/img/upload/<?php echo $related['image'] ; ?>" alt="Related Article" class="img-responsive img-thumbnail"><span class="text-dark"><?php echo $related['title'] ; ?></span></a>
+              </div>
+                <?php } } else {
+                    echo '<h7 class="ml-3"> No Related Post Available </h7>';
+                    } ?>
+
+            </div>
+
+          </div>
+          <!-- end if statement -->
+          <?php } } else { header("Location: 404.php"); } ?>
+
                 </div>
                 <div class="comments-area">
                     <h4>05 Comments</h4>

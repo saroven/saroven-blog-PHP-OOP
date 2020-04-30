@@ -3,6 +3,10 @@
   include 'lib/Database.php';
   include 'helper/Formate.php';
 ?>
+<?php
+  $db = new Database();
+  $fm = new Formate();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

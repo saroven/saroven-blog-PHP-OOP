@@ -4,10 +4,7 @@
   include 'include/slider.php';
 ?>
 
-<?php
-  $db = new Database();
-  $fm = new Formate();
-?>
+
 <!-- pagination -->
   <?php
     $per_page = 2;
