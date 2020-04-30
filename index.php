@@ -55,7 +55,8 @@
                 <a class="button" href="post.php?id=<?php echo $result['id'] ?>">Read More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
-    <?php } ?> <!--end while loopc-->
+    <?php } ?>
+      <!--end while loopc-->
       <!-- pagination start -->
       <?php
         $q = "select * from posts";
