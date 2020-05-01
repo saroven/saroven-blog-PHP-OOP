@@ -3,15 +3,17 @@
               <div class="widget-wrap">
                 <div class="single-sidebar-widget newsletter-widget">
                   <h4 class="single-sidebar-widget__title">Search Post</h4>
-                  <div class="form-group mt-30">
-                    <div class="col-autos">
-                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search Keyword" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Search Keyword'">
-                    </div>
-                  </div>
-                  <button class="bbtns d-block mt-20 w-100">Search</button>
-                </div>
 
+                  <form action="search.php" method="get">
+                    <div class="form-group mt-30">
+                      <div class="col-autos">
+                        <input type="text" name="q" class="form-control" id="inlineFormInputGroup" placeholder="Search Keyword" onfocus="this.placeholder = ''"
+                          onblur="this.placeholder = 'Search Keyword'">
+                      </div>
+                    </div>
+                    <button class="bbtns d-block mt-20 w-100">Search</button>
+                  </form>
+                </div>
 
                 <div class="single-sidebar-widget post-category-widget">
                   <h4 class="single-sidebar-widget__title">Catgory</h4>
