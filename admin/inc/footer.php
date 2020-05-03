@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0
     </div>
-    <strong>Copyright &copy; 2014-2020 <a href="#">Saroven</a>.</strong> All rights
+    <strong>Copyright &copy; 2014-2020 <a href="https://saroven.info">saroven</a>.</strong> All rights
     reserved.
   </footer>
 
