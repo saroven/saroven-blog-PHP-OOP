@@ -12,17 +12,7 @@
 
  ?>
 
- <?php 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $email = $fm->validation($_POST['email']);
-      $password = $fm->validation(md5($_POST['password']));
-      $email = mysqli_real_escape_string($db->link, $email);
-      $password = mysqli_real_escape_string($db->link, $password);
-      $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
-      $result = $db->select($query);
-
-    }
-  ?>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,22 +50,31 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
-    
+
 <?php
-    if ($result != false) {
-        $value = mysqli_fetch_array($result);
-        $row = mysqli_num_rows($result);
-        if ($row > 0) {
-          Session::set("login", true);
-          Session::set("email", $value['email']);
-          Session::set("userid", $value['id']);
-          header('Location: index.php');
-        }else {
-          echo "<div class='alert alert-danger' role='alert'>Something Went wrong. Please Try Again! </div>";
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $email = $fm->validation($_POST['email']);
+      $password = $fm->validation(md5($_POST['password']));
+      $email = mysqli_real_escape_string($db->link, $email);
+      $password = mysqli_real_escape_string($db->link, $password);
+      $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+      $result = $db->select($query);
+
+      if ($result != false) {
+          $value = mysqli_fetch_array($result);
+          $row = mysqli_num_rows($result);
+          if ($row > 0) {
+            Session::set("login", true);
+            Session::set("email", $value['email']);
+            Session::set("userid", $value['id']);
+            header('Location: index.php');
+          }else {
+            echo "<div class='alert alert-danger' role='alert'>Something Went wrong. Please Try Again! </div>";
+          }
+        }else{
+          echo "<div class='alert alert-danger' role='alert'>Email or Password Not Matched!</div>";
         }
-      }else{
-        echo "<div class='alert alert-danger' role='alert'>Email or Password Not Matched!</div>";
-      }
+  }
 
       ?>
 

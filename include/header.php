@@ -1,3 +1,8 @@
+<?php 
+  include '../lib/Session.php';
+  Session::checkSession();
+  ?>
+  
 <?php
   include 'config/config.php';
   include 'lib/Database.php';

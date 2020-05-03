@@ -1,3 +1,19 @@
+<?php 
+  include '../lib/Session.php';
+  Session::checkSession();
+  ?>
+  <?php
+  include '../config/config.php';
+  include '../lib/Database.php';
+  include '../helper/Formate.php';
+
+?>
+
+<?php 
+  if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+    Session::destroy();
+  }
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,7 +127,7 @@
                   <a href="inbox.php" class="btn btn-default btn-flat">Inbox</a>
                 </div>
                 <div class="col-xs-4">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="?action=logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
                 </div>
               </li>

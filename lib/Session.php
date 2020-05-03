@@ -13,8 +13,8 @@
 		}
 
 		public static function get($key){
-			if (isset($_SESSION["$key"])) {
-				return $_SESSION['$key'];
+			if (isset($_SESSION[$key])) {
+				return $_SESSION[$key];
 			}else {
 				return false;
 			}
@@ -27,7 +27,7 @@
 		public static function checkSession(){
 			self::init();
 
-			if (self::get("login") == false) {
+			if (self::get('login') == false) {
 				self::destroy();
 				header("Location: login.php");
 			}
