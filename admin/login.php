@@ -65,8 +65,9 @@
           $row = mysqli_num_rows($result);
           if ($row > 0) {
             Session::set("login", true);
-            Session::set("email", $value['email']);
             Session::set("userid", $value['id']);
+            Session::set("email", $value['email']);
+            Session::set("role_id", $value['role_id']);
             header('Location: index.php');
           }else {
             echo "<div class='alert alert-danger' role='alert'>Something Went wrong. Please Try Again! </div>";
