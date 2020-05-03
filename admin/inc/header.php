@@ -6,7 +6,13 @@
   include '../config/config.php';
   include '../lib/Database.php';
   include '../helper/Formate.php';
+  include '../helper/global_config.php';
 
+?>
+
+<?php
+  $db = new Database();
+  $fm = new Formate();
 ?>
 
 <?php 
