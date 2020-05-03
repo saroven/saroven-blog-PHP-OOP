@@ -26,13 +26,13 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a href="#">
+        <li class="">
+          <a href="/">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
-        <li class="active treeview">
-          <a href="#">
+        <li class="active">
+          <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
