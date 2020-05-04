@@ -55,7 +55,7 @@
       <?php
         $q = "select * from posts";
         $data = $db->select($q);
-        $total_rows = mysqli_num_rows($data);
+        $total_rows = $data->num_rows;
         $total_page = ceil($total_rows / $per_page);
       ?>
       <div class="row">

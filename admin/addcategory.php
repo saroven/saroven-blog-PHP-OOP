@@ -25,7 +25,7 @@
                 <?php 
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $title = $_POST['title'];                      
-                        $title = mysqli_real_escape_string($db->link, $title);
+                        $title = $db->link->real_escape_string($title);
                         if (empty($title)) {
                         failed('Field must not be empty!');
                       }else {
