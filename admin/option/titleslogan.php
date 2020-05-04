@@ -1,6 +1,6 @@
 <?php 
-    include '../inc/header.php';
-    include '../inc/sidebar.php';
+    include 'inc/header.php';
+    include 'inc/sidebar.php';
  ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -49,5 +49,5 @@
 </div>
 <!-- /.content-wrapper -->
  <?php
-    include '../inc/footer.php';
+    include 'inc/footer.php';
   ?>
