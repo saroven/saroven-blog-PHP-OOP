@@ -45,9 +45,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="option/titleslogan.php"><i class="fa fa-circle-o"></i> Title & Slogan</a></li>
-            <li><a href="option/social.php"><i class="fa fa-circle-o"></i> Social Media</a></li>
-            <li><a href="option/copyright.php"><i class="fa fa-circle-o"></i> Copyright</a></li>
+            <li><a href="titleslogan.php"><i class="fa fa-circle-o"></i> Title & Slogan</a></li>
+            <li><a href="social.php"><i class="fa fa-circle-o"></i> Social Media</a></li>
+            <li><a href="copyright.php"><i class="fa fa-circle-o"></i> Copyright</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -72,8 +72,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="category/add.php"><i class="fa fa-plus"></i> Add Category</a></li>
-            <li><a href="category/view.php"><i class="fa fa-square"></i> View Categories</a></li>
+            <li><a href="addcategory.php"><i class="fa fa-plus"></i> Add Category</a></li>
+            <li><a href="viewcategory.php"><i class="fa fa-square"></i> View Categories</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -85,8 +85,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="post/add.php"><i class="fa fa-plus"></i> Add Post</a></li>
-            <li><a href="post/view.php"><i class="fa fa-square"></i> View Posts</a></li>
+            <li><a href="addpost.php"><i class="fa fa-plus"></i> Add Post</a></li>
+            <li><a href="viewpost.php"><i class="fa fa-square"></i> View Posts</a></li>
           </ul>
         </li>
       </ul>
