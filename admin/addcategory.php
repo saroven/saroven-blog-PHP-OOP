@@ -22,12 +22,29 @@
         <div class="col-md-12">
             <!-- general form elements -->
             <div class="box box-primary">
+                <?php 
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $title = $_POST['title'];                      
+                        $title = mysqli_real_escape_string($db->link, $title);
+                        if (empty($title)) {
+                        failed('Field must not be empty!');
+                      }else {
+                        $query = "INSERT INTO categories(title) VALUES('$title')";
+                        $result = $db->insert($query);
+                        if ($result) {
+                            success('Category Inserted Succecssfully.');
+                        }else{
+                            failed('Category Not Inserted');
+                        }
+                      }
+                  }
+                 ?>
                 <!-- form start -->
-                <form role="form">
+                <form role="form" action="" method="post">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="category">Category Name</label>
-                            <input type="text" class="form-control" id="category" placeholder="Enter Category Name">
+                            <input type="text" name="title" class="form-control" id="category" placeholder="Enter Category Name">
                         </div>
                     </div>
                     <!-- /.box-body -->
