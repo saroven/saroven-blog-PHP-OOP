@@ -38,10 +38,10 @@
 		{
 			$result = $this->link->query($q) or die($this->link->error.__line__);
 			if ($result) {
-				header("location: index.php?msg=".urlencode('Data inserted successuly'));
+				return $result;
 				exit();
 			} else {
-				die("Error: ('.$this->errno.')").$this->link->error;
+				return false;
 			}
 		}
 		// showing data in edit page
@@ -51,7 +51,7 @@
 			if ($result) {
 				return $result;
 			} else {
-				die("Error: ('.$this->errno.')").$this->link->error;
+				return false;
 			}
 		}
 		// update data
@@ -59,10 +59,9 @@
 		{
 			$result = $this->link->query($q) or die($this->link->error.__line__);
 			if ($result) {
-				header("location: index.php?msg=".urlencode('Data Updated successuly'));
-				exit();
+				return $result;
 			} else {
-				die("Error: ('.$this->errno.')").$this->link->error;
+				return false;
 			}
 		}
 		// Delete data
@@ -70,10 +69,9 @@
 		{
 			$result = $this->link->query($q) or die($this->link->error.__line__);
 			if ($result) {
-				header("location: index.php?msg=".urlencode(' Deleted successuly'));
-				exit();
+				return $result;
 			} else {
-				die("Error: ('.$this->errno.')").$this->link->error;
+				return false;
 			}
 		}
 	}
