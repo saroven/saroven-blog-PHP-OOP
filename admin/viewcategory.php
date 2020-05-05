@@ -2,6 +2,28 @@
 include 'inc/header.php';
 include 'inc/sidebar.php';
 ?>
+
+
+<?php
+    if (isset($_GET['delcat']) && $_GET['delcat'] !== null) {
+        $id = $_GET['delcat'];
+
+        $q = "SELECT * FROM categories WHERE id='$id'";
+        $data = $db->select($q);
+        if ($data) {
+            $query = "DELETE FROM categories WHERE id='$id'";
+            $result = $db->delete($query);
+            if ($result) {
+                $_SESSION['success'] = 'Deleted Successfull.';
+            }else{
+                $_SESSION['error'] = 'Delete Operation Failed!';
+            }
+        }else{
+            $_SESSION['error'] = 'Something went wrong!';
+        }
+    }
+
+ ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -39,21 +61,21 @@ include 'inc/sidebar.php';
                             </thead>
                             <tbody>
 
-                                <?php
-                                    $query = "SELECT * FROM categories ORDER BY id DESC";
-                                    $category = $db->select($query);
-                                    if ($category) {
-                                        $i = 0;
-                                        while ($result = $category->fetch_assoc()) {
-                                            $i++;
-                                 ?>
+                        <?php
+                            $query = "SELECT * FROM categories ORDER BY id DESC";
+                            $category = $db->select($query);
+                            if ($category) {
+                                $i = 0;
+                                while ($result = $category->fetch_assoc()) {
+                                    $i++;
+                         ?>
                                 <tr>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $result['title']; ?></td>
-                                    <td><a href="editcategory.php?id=<?php echo $result['id']; ?>">Edit</a> | <a onclick="return confirm('Are You Sure?')" href="deletecategory.php?id=<?php echo $result['id']; ?>">Delete</a></td>
+                                    <td><a href="editcategory.php?id=<?php echo $result['id']; ?>">Edit</a> | <a onclick="return confirm('Are You Sure?')" href="viewcategory.php?delcat=<?php echo $result['id']; ?>">Delete</a></td>
                                 </tr>
 
-                                <?php } } ?>
+                            <?php } } ?>
                             </tbody>
                             <tfoot>
                                 <tr>
