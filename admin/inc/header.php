@@ -1,4 +1,5 @@
 <?php 
+  include '../helper/functions.php';
   include '../lib/Session.php';
   Session::checkSession();
   ?>
@@ -6,7 +7,6 @@
   include '../config/config.php';
   include '../lib/Database.php';
   include '../helper/Formate.php';
-  include '../helper/global_config.php';
 
 ?>
 
