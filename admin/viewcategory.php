@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'inc/header.php';
 include 'inc/sidebar.php';
 ?>
@@ -27,6 +27,7 @@ include 'inc/sidebar.php';
                         <div class="pull-right"><a href="addcategory.php" class="btn btn-primary">Add Category</a></div>
                     </div>
                     <!-- /.box-header -->
+                    <?php include '../helper/message.php'; ?>
                     <div class="box-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
@@ -38,7 +39,7 @@ include 'inc/sidebar.php';
                             </thead>
                             <tbody>
 
-                                <?php 
+                                <?php
                                     $query = "SELECT * FROM categories ORDER BY id DESC";
                                     $category = $db->select($query);
                                     if ($category) {
