@@ -91,6 +91,14 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <script type="text/javascript">
+    $(function() {
+
+      nav_highlight('dashboard','dashboard');
+
+    });
+  </script>
  
  <?php 
   include 'inc/footer.php';
