@@ -24,6 +24,7 @@ include 'inc/sidebar.php';
                 <div class="box">
                     <div class="box-header">
                         <h3 class="box-title">Category Lists</h3>
+                        <div class="pull-right"><a href="addcategory.php" class="btn btn-primary">Add Category</a></div>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
