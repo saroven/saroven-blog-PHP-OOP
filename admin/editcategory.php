@@ -23,10 +23,31 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <?php
-                    if (isset($_GET['id']) || $_GET['id'] != false) {
-                        echo 'hello';
+                    if (isset($_GET['id']) && !empty($_GET['id'])) {
+                        $id = $_GET['id'];
+                        $query = "SELECT * FROM categories WHERE id='$id'";
+                        $result = $db->select($query);
+                        $category = $result->fetch_assoc();
+
                     }else{
-                        echo 'sdfsaf';
+                        goToUrl('viewcategory.php');
+                    }
+
+                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $title = $_POST['title'];
+                        $title = $db->link->real_escape_string($title);
+                        if (empty($title)) {
+                        failed('Field must not be empty!');
+                      }else {
+                            $query = "UPDATE categories SET title = '$title' WHERE id='$id'";
+                            $result = $db->update($query);
+                            if ($result) {
+                                $_SESSION['success'] = 'Category Updated Successfull';
+                                goToUrl('viewcategory.php');
+                            }else{
+                                failed('Category Not Updated!');
+                            }
+                        }
                     }
                  ?>
                 <!-- form start -->
@@ -34,7 +55,8 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="category">Category Name</label>
-                            <input type="text" name="title" class="form-control" id="category" placeholder="Enter Category Name">
+                            <input type="hidden" name="catid" value="<?php echo $category['id']; ?>">
+                            <input type="text" name="title" value="<?php echo $category['title']; ?>" class="form-control" id="category" placeholder="Enter Category Name">
                         </div>
                     </div>
                     <!-- /.box-body -->
