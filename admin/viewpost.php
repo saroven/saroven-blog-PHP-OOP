@@ -66,6 +66,14 @@
 </div>
 <!-- /.content-wrapper -->
 
+<script type="text/javascript">
+    $(function() {
+
+      nav_highlight('post','view-post');
+
+    });
+  </script>
+
 <?php 
     include 'inc/footer.php';
 ?>

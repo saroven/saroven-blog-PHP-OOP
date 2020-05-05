@@ -57,6 +57,14 @@ include 'inc/sidebar.php';
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
+
+    <script type="text/javascript">
+    $(function() {
+
+      nav_highlight('site-option','social');
+
+    });
+  </script>
 <?php 
     include 'inc/footer.php';
  ?>

@@ -63,6 +63,14 @@
 </div>
 <!-- /.content-wrapper -->
 
+<script type="text/javascript">
+    $(function() {
+
+      nav_highlight('category','add-category');
+
+    });
+  </script>
+
 <?php
     include 'inc/footer.php';
  ?>

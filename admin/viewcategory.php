@@ -76,6 +76,14 @@ include 'inc/sidebar.php';
 </div>
 <!-- /.content-wrapper -->
 
+<script type="text/javascript">
+    $(function() {
+
+      nav_highlight('category','view-category');
+
+    });
+  </script>
+
 <?php
     include 'inc/footer.php';
  ?>

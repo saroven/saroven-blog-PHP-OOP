@@ -45,6 +45,13 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<script type="text/javascript">
+    $(function() {
+
+      nav_highlight('site-option','copyright');
+
+    });
+  </script>
 
 <?php 
     include 'inc/footer.php';

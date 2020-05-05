@@ -48,6 +48,14 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script type="text/javascript">
+    $(function() {
+
+      nav_highlight('site-option','title');
+
+    });
+  </script>
  <?php
     include 'inc/footer.php';
   ?>

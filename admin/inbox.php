@@ -76,6 +76,11 @@
         //data table
       $('#example1').DataTable()
         
+      // nav highlight function
 
+      // nav_highlight('category','add-category');
+
+    });
+  </script>
     })
 </script>
