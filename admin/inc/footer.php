@@ -6,8 +6,7 @@
     reserved.
   </footer>
 
-<!-- jQuery 3 -->
-<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -27,6 +26,7 @@
 <script src="assets/bower_components/ckeditor/ckeditor.js"></script>
 <!-- AdminLTE App -->
 <script src="assets/dist/js/adminlte.min.js"></script>
+<script src="assets/custom/js/navactive.js"></script>
 
 <script>
     $(function () {
