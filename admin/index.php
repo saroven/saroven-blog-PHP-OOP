@@ -2,6 +2,16 @@
   include 'inc/header.php';
   include 'inc/sidebar.php';
 
+
+// Program to solve admin index page css problem.
+
+// $link = $_SERVER['REQUEST_URI'];
+
+if ($_SERVER['REQUEST_URI'] == '/admin') {
+  goToUrl('/admin/');
+}
+
+
  ?>
 
   <!-- Content Wrapper. Contains page content -->
