@@ -26,17 +26,17 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="">
+        <li class="nav" id="home">
           <a href="/">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
-        <li class="active">
+        <li class="nav" id="dashboard">
           <a href="index.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li class="treeview">
+        <li class="treeview nav" id="site-option">
           <a href="#">
             <i class="fa  fa-cogs"></i>
             <span>Site Option</span>
@@ -45,12 +45,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="titleslogan.php"><i class="fa fa-circle-o"></i> Title & Slogan</a></li>
-            <li><a href="social.php"><i class="fa fa-circle-o"></i> Social Media</a></li>
-            <li><a href="copyright.php"><i class="fa fa-circle-o"></i> Copyright</a></li>
+            <li class="nav" id="title"><a href="titleslogan.php"><i class="fa fa-circle-o"></i> Title & Slogan</a></li>
+            <li class="nav" id="social"><a href="social.php"><i class="fa fa-circle-o"></i> Social Media</a></li>
+            <li class="nav" id="copyright"><a href="copyright.php"><i class="fa fa-circle-o"></i> Copyright</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview nav" id="page">
           <a href="#">
             <i class="fa fa-folder"></i>
             <span>Update Pages</span>
@@ -59,11 +59,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> About Us</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Contact Us</a></li>
+            <li class="nav" id="about"><a href="#"><i class="fa fa-circle-o"></i> About Us</a></li>
+            <li class="nav" id="contact"><a href="#"><i class="fa fa-circle-o"></i> Contact Us</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview nav" id="category">
           <a href="#">
             <i class="fa fa-tags"></i>
             <span>Catagory Option</span>
@@ -72,11 +72,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="addcategory.php"><i class="fa fa-plus"></i> Add Category</a></li>
-            <li><a href="viewcategory.php"><i class="fa fa-square"></i> View Categories</a></li>
+            <li class="nav" id="add-category"><a href="addcategory.php"><i class="fa fa-plus"></i> Add Category</a></li>
+            <li class="nav" id="view-category"><a href="viewcategory.php"><i class="fa fa-square"></i> View Categories</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview nav" id="post">
           <a href="#">
             <i class="fa fa-pencil"></i>
             <span>Post Option</span>
@@ -85,8 +85,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="addpost.php"><i class="fa fa-plus"></i> Add Post</a></li>
-            <li><a href="viewpost.php"><i class="fa fa-square"></i> View Posts</a></li>
+            <li class="nav" id="add-post"><a href="addpost.php"><i class="fa fa-plus"></i> Add Post</a></li>
+            <li class="nav" id="view-post"><a href="viewpost.php"><i class="fa fa-square"></i> View Posts</a></li>
           </ul>
         </li>
       </ul>
