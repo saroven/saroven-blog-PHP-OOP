@@ -30,6 +30,7 @@
                         $category = $result->fetch_assoc();
 
                     }else{
+                        $_SESSION['error'] = 'Something went wrong! please try again.';
                         goToUrl('viewcategory.php');
                     }
 
