@@ -4,13 +4,28 @@
 
 
 // Program to solve admin index page css problem.
-
-// $link = $_SERVER['REQUEST_URI'];
+// $_SERVER['REQUEST_URI'];
 
 if ($_SERVER['REQUEST_URI'] == '/admin') {
   goToUrl('/admin/');
 }
 
+//  small box data
+// posts
+
+$query = 'SELECT * FROM posts';
+$posts = $db->select($query);
+$pcount = $posts->num_rows;
+
+// category
+$query = 'SELECT * FROM categories';
+$categories = $db->select($query);
+$ccount = $categories->num_rows;
+
+// users
+$query = 'SELECT * FROM users';
+$users = $db->select($query);
+$ucount = $users->num_rows;
 
  ?>
 
@@ -39,9 +54,9 @@ if ($_SERVER['REQUEST_URI'] == '/admin') {
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>150</h3>
+              <h3><?php echo $pcount; ?></h3>
 
-              <p>New Posts</p>
+              <p>Total Posts</p>
             </div>
             <div class="icon">
               <i class="fa fa-pencil"></i>
@@ -54,9 +69,9 @@ if ($_SERVER['REQUEST_URI'] == '/admin') {
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
+              <h3><?php echo $ccount; ?></h3>
 
-              <p>Bounce Rate</p>
+              <p>Total Categories</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
@@ -69,9 +84,9 @@ if ($_SERVER['REQUEST_URI'] == '/admin') {
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo $ucount; ?></h3>
 
-              <p>User Registrations</p>
+              <p>Total Users</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
