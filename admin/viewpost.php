@@ -15,6 +15,7 @@
         </ol>
     </section>
 
+
     <!-- Main content -->
     <section class="content">
 
@@ -23,6 +24,7 @@
             <div class="box box-primary">
                 <div class="box">
                     <div class="box-header">
+                        <?php include '../helper/message.php'; ?>
                         <h3 class="box-title">Post Lists</h3>
                     </div>
                     <!-- /.box-header -->
@@ -62,7 +64,7 @@
                                         <td><?php echo $post['name']; ?></td>
                                         <td><?php echo $post['tags']; ?></td>
                                         <td><?php echo $fm->formatDate($post['date']); ?></td>
-                                        <td><a href="editpost.html">Edit</a> | <a href="deletepost.html">Delete</a></td>
+                                        <td><a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a> | <a href="?deletepost=<?php echo $post['id']; ?>">Delete</a></td>
                                     </tr>
                                         <?php }} ?>
                             </tbody>
