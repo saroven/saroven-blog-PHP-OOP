@@ -1,6 +1,6 @@
-<?php 
+<?php
 	/**
-	 * 
+	 *
 	 */
 	class Session
 	{
@@ -21,7 +21,7 @@
 		}
 		public static function destroy(){
 			session_destroy();
-			header("Location: login.php");
+			header("Location: admin/login.php");
 		}
 
 		public static function checkSession(){
@@ -29,7 +29,7 @@
 
 			if (self::get('login') == false) {
 				self::destroy();
-				header("Location: login.php");
+				header("Location: admin/login.php");
 			}
 		}
 	}
