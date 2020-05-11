@@ -43,7 +43,10 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    $query = "SELECT posts.*, categories.title AS cattitle FROM posts INNER JOIN categories ON posts.cat = categories.id ORDER BY posts.title DESC";
+                                    $query = "SELECT posts.*, categories.title AS cattitle, users.name FROM posts
+                                     INNER JOIN categories ON posts.cat = categories.id
+                                     INNER JOIN users ON posts.author = users.id
+                                     ORDER BY posts.title DESC";
                                     $result = $db->select($query);
                                 ?>
                                     <?php if ($result) {
@@ -56,7 +59,7 @@
                                         <td><?php echo $fm->textShorten($post['content'], 150); ?></td>
                                         <td><?php echo $post['cattitle']; ?></td>
                                         <td><img src="<?php echo $post['image']; ?>" alt="" height="40px" width="60px;"></td>
-                                        <td><?php echo $post['author']; ?></td>
+                                        <td><?php echo $post['name']; ?></td>
                                         <td><?php echo $post['tags']; ?></td>
                                         <td><?php echo $fm->formatDate($post['date']); ?></td>
                                         <td><a href="editpost.html">Edit</a> | <a href="deletepost.html">Delete</a></td>
