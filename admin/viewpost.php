@@ -30,25 +30,49 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
+                                    <th>No.</th>
                                     <th>Post Title</th>
                                     <th>Description</th>
+                                    <th>Category</th>
                                     <th>Image</th>
+                                    <th>Author</th>
+                                    <th>Tags</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>All others</td>
-                                    <td>All others</td>
-                                    <td><a href="editpost.html">Edit</a> | <a href="deletepost.html">Delete</a></td>
-                                </tr>
+                                <?php
+                                    $query = "SELECT posts.*, categories.title AS cattitle FROM posts INNER JOIN categories ON posts.cat = categories.id ORDER BY posts.title DESC";
+                                    $result = $db->select($query);
+                                ?>
+                                    <?php if ($result) {
+                                        $i =0;
+                                        while ($post = $result->fetch_assoc()) {
+                                            $i++; ?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $post['title']; ?></td>
+                                        <td><?php echo $fm->textShorten($post['content'], 150); ?></td>
+                                        <td><?php echo $post['cattitle']; ?></td>
+                                        <td><img src="<?php echo $post['image']; ?>" alt="" height="40px" width="60px;"></td>
+                                        <td><?php echo $post['author']; ?></td>
+                                        <td><?php echo $post['tags']; ?></td>
+                                        <td><?php echo $fm->formatDate($post['date']); ?></td>
+                                        <td><a href="editpost.html">Edit</a> | <a href="deletepost.html">Delete</a></td>
+                                    </tr>
+                                        <?php }} ?>
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th>No.</th>
                                     <th>Post Title</th>
                                     <th>Description</th>
+                                    <th>Category</th>
                                     <th>Image</th>
+                                    <th>Author</th>
+                                    <th>Tags</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </tfoot>
@@ -74,6 +98,6 @@
     });
   </script>
 
-<?php 
+<?php
     include 'inc/footer.php';
 ?>
