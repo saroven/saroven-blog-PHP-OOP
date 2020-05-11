@@ -48,7 +48,7 @@
                       while ($data = $post->fetch_assoc()) { ?>
                     <div class="single-post-list">
                       <div class="thumb">
-                        <img class="card-img rounded-0" src="admin/img/upload/<?php echo $data['image'] ?>" alt="">
+                        <img class="card-img rounded-0" src="admin/<?php echo $data['image'] ?>" alt="">
                         <ul class="thumb-info">
                           <li><a href="#"><?php echo $data['author']; ?></a></li>
                           <!-- <li><a href="#">date</a></li> -->
