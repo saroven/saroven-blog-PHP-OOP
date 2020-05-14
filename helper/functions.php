@@ -8,6 +8,7 @@
 	{
 		// $url = $base_url + $url;
 		echo "<script> location.href='".$url."'; </script>";
+		exit();
 	}
 	function success($text)
 	{
