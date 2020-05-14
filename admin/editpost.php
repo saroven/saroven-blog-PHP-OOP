@@ -4,8 +4,8 @@
 ?>
 <?php
     if (isset($_GET['id']) && $_GET['id'] != null) {
-        $id = $_GET['id'];
-        $query = "SELECT * FROM posts WHERE id='$id'";
+        $pid = $_GET['id'];
+        $query = "SELECT * FROM posts WHERE id='$pid'";
         $result = $db->select($query);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,6 +15,7 @@
             $tags = $db->link->real_escape_string($_POST['tags']);
             $content = $db->link->real_escape_string($_POST['content']);
 
+            // image upload
             $permited  = array('jpg', 'jpeg', 'png', 'gif');
             $file_name = $_FILES['image']['name'];
             $file_size = $_FILES['image']['size'];
@@ -25,25 +26,55 @@
             $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
             $uploaded_image = "assets/upload/".$unique_image;
 
+
             if ($title == "" || $category == "" || $content == "" || $date == "" || $tags == "") {
                 $_SESSION['error'] = "Field can not be empty!";
-            }elseif(empty($file_name)){
-                $_SESSION['error'] = "Please select any image!";
-            }elseif ($file_size >1048567) {
-                $_SESSION['error'] = "Image Size should be less then 1MB!";
-            } elseif (in_array($file_ext, $permited) === false) {
-                    $permite = implode(', ', $permited);
-                    $_SESSION['error'] = "You can upload only:- $permite";
-                } else{
-                    move_uploaded_file($file_temp, $uploaded_image);
-                    $userid = $_SESSION['userid'];
-                    $query = "INSERT INTO posts(cat, title, content, image, author, tags, date) VALUES('$category', '$title', '$content', '$uploaded_image', '$userid', '$tags', '$date')";
-                    $inserted_rows = $db->insert($query);
-                    if ($inserted_rows) {
-                        $_SESSION['success'] = "Post Inserted Successfully.";
+                // goToUrl('editpost.php');
+            }else {
+                if (!empty($file_name)) {
+
+                    // check for file size
+                    if ($file_size >1048567) {
+                        $_SESSION['error'] = "Image Size should be less then 1MB!";
+                    }elseif (in_array($file_ext, $permited) === false) {
+                            $permite = implode(', ', $permited);
+                            $_SESSION['error'] = "You can upload only:- $permite";
+                        } else{
+                            move_uploaded_file($file_temp, $uploaded_image);
+
+                            $query ="UPDATE posts SET
+                                    cat = '$category',
+                                    title = '$title',
+                                    content = '$content',
+                                    image = '$uploaded_image',
+                                    tags = '$tags',
+                                    date = '$date'
+                                    WHERE id = '$pid'";
+
+                            $updated_rows = $db->update($query);
+                            if ($updated_rows) {
+                                $_SESSION['success'] = "Post Updated Successfully.";
+                            }else {
+                                $_SESSION['error'] = "Post Not Updated!";
+                            }
+                        }
                     }else {
-                        $_SESSION['error'] = "Post Not Inserted!";
+                        $query ="UPDATE posts SET
+                                cat = '$category',
+                                title = '$title',
+                                content = '$content',
+                                tags = '$tags',
+                                date = '$date'
+                                WHERE id = '$pid'";
+
+                        $updated_rows = $db->update($query);
+                        if ($updated_rows) {
+                            $_SESSION['success'] = "Post Updated Successfully.";
+                        }else {
+                            $_SESSION['error'] = "Post Not Updated!";
+                        }
                     }
+
                 }
             }
 
@@ -74,7 +105,7 @@
                 <div class="box box-primary">
                     <!-- form start -->
                 <?php while ($post = $result->fetch_assoc()) { ?>
-                    <form role="form" action="addpost.php" method="post" enctype="multipart/form-data">
+                    <form role="form" action="" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="title">Title</label>
