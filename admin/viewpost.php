@@ -24,7 +24,9 @@
             <div class="box box-primary">
                 <div class="box">
                     <div class="box-header">
-                        <?php include '../helper/message.php'; ?>
+                        <?php include '../helper/message.php';?>
+
+
                         <h3 class="box-title">Post Lists</h3>
                     </div>
                     <!-- /.box-header -->
@@ -60,11 +62,13 @@
                                         <td><?php echo $post['title']; ?></td>
                                         <td><?php echo $fm->textShorten($post['content'], 150); ?></td>
                                         <td><?php echo $post['cattitle']; ?></td>
-                                        <td><img src="<?php echo $post['image']; ?>" alt="" height="40px" width="60px;"></td>
+                                        <td><img src="<?php echo $post['image']; ?>" alt="" height="40px" width="60px;"></td>   
                                         <td><?php echo $post['name']; ?></td>
                                         <td><?php echo $post['tags']; ?></td>
                                         <td><?php echo $fm->formatDate($post['date']); ?></td>
-                                        <td><a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a> | <a href="?deletepost=<?php echo $post['id']; ?>">Delete</a></td>
+                                        <td><a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a>
+                                         |
+                                        <a onclick="return confirm('Are you sure?');" href="?deletepost=<?php echo $post['id']; ?>">Delete</a></td>
                                     </tr>
                                         <?php }} ?>
                             </tbody>
