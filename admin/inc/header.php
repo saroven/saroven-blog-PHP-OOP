@@ -1,4 +1,21 @@
-<?php 
+<?php
+
+  //set headers to NOT cache a page
+  // header("Cache-Control: no-cache, must-revalidate"); //HTTP 1.1
+  // header("Pragma: no-cache"); //HTTP 1.0
+  // header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+  // Date in the past
+  //or, if you DO want a file to cache, use:
+  // header("Cache-Control: max-age=2592000");
+//30days (60sec * 60min * 24hours * 30days)
+
+
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
+
   include '../helper/functions.php';
   include '../lib/Session.php';
   Session::checkSession();
@@ -15,7 +32,7 @@
   $fm = new Formate();
 ?>
 
-<?php 
+<?php
   if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     Session::destroy();
   }
@@ -95,7 +112,7 @@
                     </a>
                   </li>
                   <!-- end message -->
-                  
+
                 </ul>
               </li>
               <li class="footer"><a href="inbox.php">See All Messages</a></li>
