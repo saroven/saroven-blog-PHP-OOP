@@ -33,7 +33,8 @@
                             <input type="text" class="form-control" id="sologan" placeholder="Sologan">
                         </div>
                         <div class="form-group">
-                            <label for="logo">Website Logo</label>
+                            <label for="logo">Website Logo</label> <br>
+                            <img src="assets/upload/logo.png" alt="website logo" style="padding: 20px; height:70px; width:150px">
                             <input type="file" class="form-control" id="logo">
                         </div>
                     </div>
