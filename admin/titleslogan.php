@@ -49,7 +49,7 @@
 
                             $updated_rows = $db->update($query);
                             if ($updated_rows) {
-                                $_SESSION['success'] = "Data Updated Successfully.";
+                            $_SESSION['success'] = "Data Updated Successfully.";
                             }else {
                                 $_SESSION['error'] = "Data Not Updated!";
                             }
