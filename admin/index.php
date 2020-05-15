@@ -61,7 +61,7 @@ $ucount = $users->num_rows;
             <div class="icon">
               <i class="fa fa-pencil"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="viewpost.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -76,7 +76,7 @@ $ucount = $users->num_rows;
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="viewcategory.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
