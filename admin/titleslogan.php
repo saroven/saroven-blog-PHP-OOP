@@ -1,6 +1,10 @@
 <?php
     include 'inc/header.php';
     include 'inc/sidebar.php';
+
+    $query = "SELECT * FROM title_slogan WHERE id=1";
+    $result = $db->select($query);
+
  ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -22,19 +26,23 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <!-- form start -->
+       <?php  if ($result) {
+
+        while ($data = $result->fetch_assoc()) { ?>
+
                 <form role="form" method="post" action="titleslogan.php" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="title">Website Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="Title">
+                            <input type="text" value="<?php echo $data['title']; ?>" class="form-control" id="title" placeholder="Title">
                         </div>
                         <div class="form-group">
                             <label for="sologan">Website Sologan</label>
-                            <input type="text" class="form-control" id="sologan" placeholder="Sologan">
+                            <input type="text" value="<?php echo $data['slogan']; ?>" class="form-control" id="sologan" placeholder="Sologan">
                         </div>
                         <div class="form-group">
                             <label for="logo">Website Logo</label> <br>
-                            <img src="assets/upload/logo.png" alt="website logo" style="padding: 20px; height:70px; width:150px">
+                            <img src="<?php echo $data['logo']; ?>" alt="website logo" style="padding: 20px; height:70px; width:150px">
                             <input type="file" class="form-control" id="logo">
                         </div>
                     </div>
@@ -44,6 +52,7 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
+        <?php } }?>
             </div>
             <!-- /.box -->
         </div>
