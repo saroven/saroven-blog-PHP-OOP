@@ -27,7 +27,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="nav" id="home">
-          <a href="/">
+          <a href="/" target="_blank">
             <i class="fa fa-home"></i> <span>Home</span>
           </a>
         </li>
