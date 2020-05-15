@@ -1,4 +1,4 @@
-<?php 
+<?php
     include 'inc/header.php';
     include 'inc/sidebar.php';
  ?>
@@ -22,7 +22,7 @@
             <!-- general form elements -->
             <div class="box box-primary">
                 <!-- form start -->
-                <form role="form">
+                <form role="form" method="post" action="titleslogan.php" enctype="multipart/form-data">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="title">Website Title</label>
@@ -31,6 +31,10 @@
                         <div class="form-group">
                             <label for="sologan">Website Sologan</label>
                             <input type="text" class="form-control" id="sologan" placeholder="Sologan">
+                        </div>
+                        <div class="form-group">
+                            <label for="logo">Website Logo</label>
+                            <input type="file" class="form-control" id="logo">
                         </div>
                     </div>
                     <!-- /.box-body -->
