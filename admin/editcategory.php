@@ -35,7 +35,7 @@
                     }
 
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        $title = $_POST['title'];
+                        $title = $fm->validation($_POST['title']);
                         $title = $db->link->real_escape_string($title);
                         if (empty($title)) {
                         failed('Field must not be empty!');
