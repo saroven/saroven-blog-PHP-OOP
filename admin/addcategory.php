@@ -22,9 +22,9 @@
         <div class="col-md-12">
             <!-- general form elements -->
             <div class="box box-primary">
-                <?php 
+                <?php
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        $title = $_POST['title'];                      
+                        $title = $fm->validation($_POST['title']);
                         $title = $db->link->real_escape_string($title);
                         if (empty($title)) {
                         failed('Field must not be empty!');
@@ -74,4 +74,3 @@
 <?php
     include 'inc/footer.php';
  ?>
-       
