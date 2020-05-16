@@ -27,10 +27,18 @@
               <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-social">
-              <li><a href="#"><i class="ti-facebook"></i></a></li>
-              <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li><a href="#"><i class="ti-instagram"></i></a></li>
-              <li><a href="#"><i class="ti-pinterest"></i></a></li>
+            <?php
+              $query = "SELECT * FROM socials WHERE id=1";
+              $datas = $db->select($query);
+              if($query){
+                while ($social = $datas->fetch_assoc()) { ?>
+
+              <li><a target="_blank" href="<?= $social['fb']; ?>"><i class="ti-facebook"></i></a></li>
+              <li><a target="_blank" href="<?= $social['twi']; ?>"><i class="ti-twitter-alt"></i></a></li>
+              <li><a target="_blank" href="<?= $social['ins']; ?>"><i class="ti-instagram"></i></a></li>
+              <li><a target="_blank" href="<?= $social['pin']; ?>"><i class="ti-pinterest"></i></a></li>
+
+              <?php }} ?>
             </ul>
           </div>
         </div>
