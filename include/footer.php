@@ -9,13 +9,18 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-5  col-md-4 col-sm-6">
+        <?php
+          $query = "SELECT * FROM footer WHERE id=1";
+          $footerdata = $db->select($query);
+          if($query){
+            while ($foo = $footerdata->fetch_assoc()) { ?>
           <div class="single-footer-widget">
             <h6>About Us</h6>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-              magna aliqua.
+              <?php echo $foo['about']; ?>
             </p>
           </div>
+        <?php }} ?>
         </div>
         <div class="col-lg-5  col-md-4 col-sm-6">
           <div class="single-footer-widget">
@@ -46,32 +51,47 @@
             </div>
           </div>
         </div>
-
+        <?php
+              $query = "SELECT * FROM socials WHERE id=1";
+              $datas = $db->select($query);
+              if($query){
+                while ($social = $datas->fetch_assoc()) { ?>
         <div class="col-lg-2 col-md-4 col-sm-6">
           <div class="single-footer-widget">
             <h6>Follow Us</h6>
             <p>Let us be social</p>
             <div class="footer-social d-flex align-items-center">
-              <a href="#">
+              <a target="_blank" href="<?= $social['fb']; ?>">
                 <i class="fab fa-facebook-f"></i>
               </a>
-              <a href="#">
+              <a target="_blank" href="<?= $social['twi']; ?>">
                 <i class="fab fa-twitter"></i>
               </a>
-              <a href="#">
-                <i class="fab fa-dribbble"></i>
+              <a target="_blank" href="<?= $social['ins']; ?>">
+                <i class="fab fa-instagram"></i>
               </a>
-              <a href="#">
-                <i class="fab fa-behance"></i>
+              <a target="_blank" href="<?= $social['pin']; ?>">
+                <i class="fab fa-pinterest"></i>
               </a>
             </div>
           </div>
         </div>
+        <?php }} ?>
       </div>
+<?php
+    $query = "SELECT * FROM footer WHERE id=1";
+    $footerdata = $db->select($query);
+    if($query){
+      while ($foo = $footerdata->fetch_assoc()) { ?>
       <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
         <p class="footer-text m-0">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with   <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"> Colorib</a> | Blog site developed by <a href="https://facebook.com/sarovenbd" target="_blank">Mohammad Shah Alam</a></p>
+          <?= $foo['copyright']; ?>
+        <!-- Copyright &copy; <script>document.write(new Date().getFullYear());</script>All rights reserved -->
+        | This template is made with   <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank"> Colorib</a> | Blog site developed by <a href="https://facebook.com/sarovenbd" target="_blank">Mohammad Shah Alam</a>
+
+          </p>
       </div>
+      <?php } } ?>
     </div>
   </footer>
   <!--================ End Footer Area =================-->
