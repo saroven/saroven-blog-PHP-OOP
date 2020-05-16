@@ -47,7 +47,7 @@
           <ul class="treeview-menu">
             <li class="nav" id="title"><a href="titleslogan.php"><i class="fa fa-circle-o"></i> Title & Slogan</a></li>
             <li class="nav" id="social"><a href="social.php"><i class="fa fa-circle-o"></i> Social Media</a></li>
-            <li class="nav" id="copyright"><a href="copyright.php"><i class="fa fa-circle-o"></i> Copyright</a></li>
+            <li class="nav" id="footer"><a href="footeroption.php"><i class="fa fa-circle-o"></i> Footer</a></li>
           </ul>
         </li>
         <li class="treeview nav" id="page">
