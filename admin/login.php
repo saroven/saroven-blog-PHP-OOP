@@ -1,6 +1,6 @@
-<?php 
+<?php
   include '../lib/Session.php';
-  Session::init();
+  Session::checkLogin();
   ?>
 
   <?php
@@ -12,7 +12,7 @@
 
  ?>
 
- 
+
 <!DOCTYPE html>
 <html>
 <head>

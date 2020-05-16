@@ -32,5 +32,12 @@
 				header("Location: /admin/login.php");
 			}
 		}
+		public static function checkLogin(){
+			self::init();
+
+			if (self::get('login') == true) {
+				header("Location: /admin/index.php");
+			}
+		}
 	}
  ?>
