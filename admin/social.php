@@ -27,19 +27,19 @@ include 'inc/sidebar.php';
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="facebook">Facebook</label>
-                                        <input type="text" class="form-control" id="facebook" placeholder="Facebook">
+                                        <input type="text" name="fb" class="form-control" id="facebook" placeholder="Facebook">
                                     </div>
                                     <div class="form-group">
                                         <label for="twitter">Twitter</label>
-                                        <input type="text" class="form-control" id="twitter" placeholder="Twitter">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="LinkedIn">LinkedIn</label>
-                                        <input type="text" class="form-control" id="linkedin" placeholder="LinkedIn">
+                                        <input type="text" name="twi" class="form-control" id="twitter" placeholder="Twitter">
                                     </div>
                                     <div class="form-group">
                                         <label for="Instagram">Instagram</label>
-                                        <input type="text" class="form-control" id="Instagram" placeholder="Instagram">
+                                        <input type="text" name="ins" class="form-control" id="Instagram" placeholder="Instagram">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pinterest">Pinterest</label>
+                                        <input type="text" name="pin" class="form-control" id="pinterest" placeholder="pinterest">
                                     </div>
                                 </div>
                                 <!-- /.box-body -->
@@ -65,6 +65,6 @@ include 'inc/sidebar.php';
 
     });
   </script>
-<?php 
+<?php
     include 'inc/footer.php';
  ?>
