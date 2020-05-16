@@ -85,10 +85,10 @@
       while ($foo = $footerdata->fetch_assoc()) { ?>
       <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
         <p class="footer-text m-0">
-          Copyright &copy; <?= $foo['copyright']; ?>
+          Copyright &copy; <?= $foo['copyright']; ?> <?php echo date('Y'); ?>
           <!-- <script>document.write(new Date().getFullYear());</script>All rights reserved -->
         <!-- | This template is made with   <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank"> Colorib</a> -->
-        | Blog site developed by <a href="https://facebook.com/sarovenbd" target="_blank">Mohammad Shah Alam</a>
+        | This site developed by <a href="https://facebook.com/sarovenbd" target="_blank">Mohammad Shah Alam</a>
 
           </p>
       </div>
