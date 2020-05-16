@@ -9,10 +9,10 @@ include 'inc/sidebar.php';
 
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $fb = $_POST['fb'];
-        $twi = $_POST['twi'];
-        $ins = $_POST['ins'];
-        $pin = $_POST['pin'];
+        $fb = $fm->validation($_POST['fb']);
+        $twi = $fm->validation($_POST['twi']);
+        $ins = $fm->validation($_POST['ins']);
+        $pin = $fm->validation($_POST['pin']);
         $fb = $db->link->real_escape_string($fb);
         $twi = $db->link->real_escape_string($twi);
         $ins = $db->link->real_escape_string($ins);
