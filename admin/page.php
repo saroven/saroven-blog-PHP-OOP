@@ -9,6 +9,9 @@ if (isset($_GET['id']) && $_GET['id'] != null) {
     if ($result) {
 
         $page = $result->fetch_assoc();
+    }else {
+       $_SESSION['error'] = "Page Not Found.";
+        goToUrl('/admin/');
     }
 }else{
     Session::set('error', 'Something went wrong! Please try again.');
@@ -81,7 +84,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <!-- /.box-body -->
 
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a class="btn btn-info" href="#">View</a>
+                            <a onclick="return confirm('Are You Sure?');" class="btn btn-danger" href="delpage.php?id=<?php echo $page['id']; ?>">Delete</a>
                         </div>
                     </form>
                 </div>
