@@ -53,14 +53,24 @@
         <li class="treeview nav" id="page">
           <a href="#">
             <i class="fa fa-folder"></i>
-            <span>Update Pages</span>
+            <span>Pages</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="nav" id="about"><a href="#"><i class="fa fa-circle-o"></i> About Us</a></li>
-            <li class="nav" id="contact"><a href="#"><i class="fa fa-circle-o"></i> Contact Us</a></li>
+            <li class="nav" id="add-page"><a href="addpage.php"><i class="fa fa-circle-o"></i> Add Page</a></li>
+
+          <?php
+            $query = "SELECT * FROM pages";
+            $pages = $db->select($query);
+            if ($pages) {
+              while ($page =  $pages->fetch_assoc()) { ?>
+
+            <li class="nav" id="page-<?php echo $page['id']; ?>"><a href="page.php?id=<?php echo $page['id']; ?>"><i class="fa fa-circle-o"></i> <?php echo $page['title']; ?></a></li>
+
+          <?php }} ?>
+
           </ul>
         </li>
         <li class="treeview nav" id="category">
