@@ -48,6 +48,8 @@ $ucount = $users->num_rows;
 
       <!-- /.row -->
 
+      <?php include '../helper/message.php'; ?>
+
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">
