@@ -1,9 +1,10 @@
-<?php 
-  // include '../lib/Session.php';
+<?php
   // Session::checkSession();
   ?>
-  
+
 <?php
+  include 'helper/functions.php';
+  include 'lib/Session.php';
   include 'config/config.php';
   include 'lib/Database.php';
   include 'helper/Formate.php';
