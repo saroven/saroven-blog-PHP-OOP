@@ -22,9 +22,16 @@
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-center">
               <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-              <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
-              <li class="nav-item"><a class="nav-link" href="privacy.php">Privacy</a></li>
-              <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
+
+        <?php
+            $query = "SELECT * FROM pages";
+            $pages = $db->select($query);
+            if ($pages) {
+              while ($page =  $pages->fetch_assoc()) { ?>
+
+              <li class="nav-item"><a class="nav-link" href="page.php?id=<?php echo $page['id'] ?>"><?php echo $page['title']; ?></a></li>
+
+            <?php }} ?>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-social">
             <?php
