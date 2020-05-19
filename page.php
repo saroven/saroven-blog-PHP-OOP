@@ -3,8 +3,8 @@ include 'include/header.php';
 include 'include/navbar.php';
 
 
-if (isset($_GET['id']) && $_GET['id'] != null) {
-    $id = $_GET['id'];
+if (isset($_GET['pageid']) && $_GET['pageid'] != null) {
+    $id = $_GET['pageid'];
     $query = "SELECT * FROM pages WHERE id='$id'";
     $result = $db->select($query);
     if ($result) {

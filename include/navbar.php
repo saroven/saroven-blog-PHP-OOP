@@ -29,9 +29,11 @@
             if ($pages) {
               while ($page =  $pages->fetch_assoc()) { ?>
 
-              <li class="nav-item"><a class="nav-link" href="page.php?id=<?php echo $page['id'] ?>"><?php echo $page['title']; ?></a></li>
+              <li class="nav-item"><a class="nav-link" href="page.php?pageid=<?php echo $page['id'] ?>"><?php echo $page['title']; ?></a></li>
 
             <?php }} ?>
+            <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-social">
             <?php
