@@ -22,4 +22,16 @@ class Formate
         $sata = htmlspecialchars($data);
         return $data;
     }
+    public function getTitle()
+    {
+        $path = $_SERVER['SCRIPT_FILENAME'];
+        $title = basename($path, '.php');
+
+        if ($title == 'index') {
+            $title = "home";
+        }elseif ($title == 'contact') {
+            $title = 'contact us';
+        }
+        return $title = ucwords($title);
+    }
 }
