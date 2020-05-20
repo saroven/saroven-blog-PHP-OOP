@@ -17,7 +17,7 @@
   ?>
 <!-- pagination -->
 <?php
-  $sql = "select * from posts limit $start_from, $per_page";
+  $sql = "SELECT Posts.*, users.name FROM posts INNER JOIN users ON posts.author = users.id LIMIT $start_from, $per_page";
   $post = $db->select($sql);
 ?>
     <!--================ Start Blog Post Area =================-->
@@ -33,7 +33,7 @@
               <div class="thumb">
                 <img class="img-fluid" src="admin/<?php echo $result['image'] ?>" alt="">
                 <ul class="thumb-info">
-                  <li><a href="#"><i class="ti-user"></i><?php echo $result['author'] ?></a></li>
+                  <li><a href="#"><i class="ti-user"></i><?php echo $result['name'] ?></a></li>
                   <li><a href="#"><i class="ti-notepad"></i><?php echo $fm->formatDate($result['date']); ?></a></li>
                   <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
                 </ul>

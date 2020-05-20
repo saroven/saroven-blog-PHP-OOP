@@ -10,7 +10,7 @@
         $id = $_GET['id'];
     }
 
-    $query = "select * from posts where id=$id";
+    $query = "SELECT Posts.*, users.name FROM posts INNER JOIN users ON posts.author = users.id WHERE posts.id= '$id'";
     $post = $db->select($query);
     if ($post) {
         while ($result = $post->fetch_assoc()) { ?>
@@ -50,7 +50,7 @@
                   <div class="float-right mt-sm-0 mt-3">
                     <div class="media">
                       <div class="media-body">
-                        <h5><?php echo $result['author']; ?></h5>
+                        <h5><?php echo $result['name']; ?></h5>
                         <p><?php echo $fm->formatDate($result['date']); ?></p>
                       </div>
                       <div class="d-flex">
