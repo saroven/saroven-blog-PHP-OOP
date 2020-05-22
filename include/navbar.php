@@ -21,7 +21,13 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav justify-content-center">
-              <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+
+            <?php
+              $path = $_SERVER['SCRIPT_FILENAME'];
+              $currentpage = basename($path, '.php');
+
+            ?>
+              <li class="nav-item <?php if($currentpage == 'index'){echo 'active';} ?>"><a class="nav-link" href="index.php">Home</a></li>
 
         <?php
             $query = "SELECT * FROM pages";
@@ -29,10 +35,10 @@
             if ($pages) {
               while ($page =  $pages->fetch_assoc()) { ?>
 
-              <li class="nav-item"><a class="nav-link" href="page.php?pageid=<?php echo $page['id'] ?>"><?php echo $page['title']; ?></a></li>
+              <li class="nav-item <?php if(isset($_GET['pageid']) && $_GET['pageid'] == $page['id']) {echo 'active';} ?>"><a class="nav-link" href="page.php?pageid=<?php echo $page['id'] ?>"><?php echo $page['title']; ?></a></li>
 
             <?php }} ?>
-            <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+            <li class="nav-item <?php if($currentpage == 'contact'){echo 'active';} ?>"><a class="nav-link" href="contact.php">Contact Us</a></li>
 
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-social">
