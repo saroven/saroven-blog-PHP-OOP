@@ -55,7 +55,7 @@
                         </ul>
                       </div>
                       <div class="details mt-20">
-                        <a href="blog-single.html">
+                        <a href="post.php?id=<?php echo $data['id'] ?>">
                           <h6><?php echo $data['title']; ?></h6>
                         </a>
                       </div>
