@@ -2,6 +2,52 @@
   include 'include/header.php';
   include 'include/navbar.php';
  ?>
+<?php 
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $name = $fm->validation($_POST['name']);
+      $subject = $fm->validation($_POST['subject']);
+      $email = $fm->validation($_POST['email']);
+      $text = $fm->validation($_POST['text']);
+
+      $name = mysqli_real_escape_string($db->link, $name);
+      $subject = mysqli_real_escape_string($db->link, $subject);
+      $email = mysqli_real_escape_string($db->link, $email);
+      $text = mysqli_real_escape_string($db->link, $text);
+
+      $errn= '';
+      $errs= '';
+      $erre= '';
+      $errm= '';
+
+      if (empty($name)) {
+        $errn = 'Name Can not be empty!';
+      }
+      if(!filter_var($name, FILTER_SANITIZE_SPECIAL_CHARS)){
+        $errn = 'Invalid Name';
+      }
+      if (empty($subject)) {
+        $errs = 'Subject Can not be empty!';
+      }
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $erre = 'Invalid Email!';
+      }
+      if (empty($text)) {
+        $errm = 'Message Can not be empty!';
+      }else{
+
+          $query = "INSERT INTO contacts(name, subject, email, text) VALUES('$name', '$subject', '$email', '$text')";
+          $inserted_rows = $db->insert($query);
+
+          if ($inserted_rows) {
+            $_SESSION['success'] = "Message Send successfull.";
+          }else {
+            $_SESSION['error'] = "Something went wrong! Please try again.";
+          }
+      }
+    }
+ ?>
+
+
   <!--================ Hero sm banner start =================-->
   <section class="mb-30px">
     <div class="container">
@@ -19,8 +65,9 @@
     </div>
   </section>
   <!--================ Hero sm banner end =================-->
-
-
+<div class="container">
+  <?php include 'helper/message.php'; ?>
+</div>
   <!-- ================ contact section start ================= -->
   <section class="section-margin--small section-margin">
     <div class="container">
@@ -49,22 +96,42 @@
           </div>
         </div>
         <div class="col-md-8 col-lg-9">
-          <form action="#/" class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+          <form action="contact.php" class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
             <div class="row">
               <div class="col-lg-5">
                 <div class="form-group">
+                  <?php
+                    if (isset($errn)) {
+                      echo "<span style='color:red'>$errn</span>";
+                    }
+                   ?>
                   <input class="form-control" name="name" id="name" type="text" placeholder="Enter your name">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="email" id="email" type="email" placeholder="Enter email address">
+                  <?php
+                    if (isset($errs)) {
+                      echo "<span style='color:red'>$errs</span>";
+                    }
+                   ?>
+                  <input class="form-control" name="subject" id="subject" type="text" placeholder="Enter Subject">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" name="subject" id="subject" type="text" placeholder="Enter Subject">
+                  <?php
+                    if (isset($erre)) {
+                      echo "<span style='color:red'>$erre</span>";
+                    }
+                   ?>
+                  <input class="form-control" name="email" id="email" type="email" placeholder="Enter email address">
                 </div>
               </div>
               <div class="col-lg-7">
                 <div class="form-group">
-                    <textarea class="form-control different-control w-100" name="message" id="message" cols="30" rows="5" placeholder="Enter Message"></textarea>
+                  <?php
+                    if (isset($errm)) {
+                      echo "<span style='color:red'>$errm</span>";
+                    }
+                   ?>
+                    <textarea class="form-control different-control w-100" name="text" id="message" cols="30" rows="5" placeholder="Enter Message"></textarea>
                 </div>
               </div>
             </div>
