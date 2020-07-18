@@ -32,21 +32,42 @@
                                         <thead>
                                             <tr>
                                                 <th>Serial No.</th>
+                                                <th>Sender Name</th>
+                                                <th>Subject</th>
+                                                <th>Sender Email</th>
                                                 <th>Message</th>
+                                                <th>Date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                                $query = "SELECT * FROM contacts ORDER BY id DESC";
+                                                $contact = $db->select($query);
+                                                if ($contact) {
+                                                    $i = 0;
+                                                    while ($result = $contact->fetch_assoc()) {
+                                                        $i++;
+                                             ?>
                                             <tr>
-                                                <td>1</td>
-                                                <td>All others</td>
-                                                <td><a href="editmessage.html">Edit</a> | <a href="deletemessage.html">Delete</a></td>
+                                                <td><?php echo $i; ?></td>
+                                                <td><?php echo $result['name']; ?></td>
+                                                <td><?php echo $result['subject']; ?></td>
+                                                <td><?php echo $result['email']; ?></td>
+                                                <td><?php echo $fm->textShorten($result['text']); ?></td>
+                                                <td><?php echo $fm->formatDate($result['date']);?></td>
+                                                <td><a href="viewmsg.php?msgid=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?msgid=<?php echo $result['id'] ?>">Reply</a> | <a href="?seen=<?php echo $result['id'] ?>">Seen</a> | <a href="deletemsg.php?msgid=<?php echo $result['id'] ?>">Delete</a></td>
                                             </tr>
+                                        <?php }} ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
                                                 <th>Serial No.</th>
+                                                <th>Sender Name</th>
+                                                <th>Subject</th>
+                                                <th>Sender Email</th>
                                                 <th>Message</th>
+                                                <th>Date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </tfoot>
