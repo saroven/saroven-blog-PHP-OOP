@@ -53,7 +53,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 }else{
     $_SESSION['error'] = 'Something went wrong! please try again.';
-    // goToUrl('inbox.php');
+    goToUrl('inbox.php');
 }
 
 
@@ -65,7 +65,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Add New Post
+                Reply Message
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
