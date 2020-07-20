@@ -92,7 +92,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 <!-- /.box-footer -->
 <div class="box-footer">
   <div class="pull-right">
-    <button type="button" class="btn btn-default"><i class="fa fa-reply"></i> Reply</button>
+    <a href="replymsg.php?id=<?php echo $contact['id'] ?>" class="btn btn-default"><i class="fa fa-reply"></i> Reply</a>
     <button type="button" class="btn btn-default"><i class="fa fa-share"></i> Forward</button>
 </div>
 <button type="button" class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
