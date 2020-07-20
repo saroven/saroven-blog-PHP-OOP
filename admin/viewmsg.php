@@ -47,11 +47,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     </div>
     <div class="box-body no-padding">
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="mailbox.html"><i class="fa fa-inbox"></i> Inbox
-          <span class="label label-primary pull-right">12</span></a></li>
+        <li><a href="inbox.php"><i class="fa fa-inbox"></i> Inbox</a></li>
           <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
           <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
-          <li><a href="#"><i class="fa fa-filter"></i> Junk <span class="label label-warning pull-right">65</span></a>
+          <li><a href="#"><i class="fa fa-filter"></i> Junk</a>
           </li>
           <li><a href="#"><i class="fa fa-trash-o"></i> Trash</a></li>
       </ul>
@@ -76,14 +75,15 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 <div class="box-body no-padding">
   <div class="mailbox-read-info">
     <h3><?php echo $contact['subject']; ?></h3>
-    <h5>From: <?php echo $contact['email']; ?>
+    <h5>From: <?php echo $contact['email']; ?> <br>
       <span class="mailbox-read-time pull-right"><?php echo $fm->formatDate($contact['date']); ?></span></h5>
   </div>
   <!-- /.mailbox-read-info -->
 
       <!-- /.mailbox-controls -->
     <div class="mailbox-read-message">
-        sdfsadfsdfsdf
+        <h5>Sender Name: <?php echo $contact['name']; ?></h5> <hr>
+        <?php echo $contact['text']; ?>
     </div>
         <!-- /.mailbox-read-message -->
     </div>
