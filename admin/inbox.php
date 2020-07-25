@@ -1,4 +1,6 @@
 <?php
+
+
 include 'inc/header.php';
 include 'inc/sidebar.php';
     
@@ -60,7 +62,7 @@ if (isset($_GET['unseen']) && $_GET['unseen'] != '') {
     </div>
     <div class="box-body no-padding">
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#"><i class="fa fa-inbox"></i> Inbox
+        <li><a href="inbox.php"><i class="fa fa-inbox"></i> Inbox
           <span class="label label-primary pull-right">12</span></a></li>
           <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>
           <li><a href="#"><i class="fa fa-file-text-o"></i> Drafts</a></li>
@@ -112,7 +114,7 @@ if (isset($_GET['unseen']) && $_GET['unseen'] != '') {
                                     <td><?php echo $result['email']; ?></td>
                                     <td><?php echo $fm->textShorten($result['text']); ?></td>
                                     <td><?php echo $fm->formatDate($result['date']);?></td>
-                                    <td><a href="viewmsg.php?id=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?id=<?php echo $result['id'] ?>">Reply</a> | <a href="?seen=<?php echo $result['id'] ?>">Seen</a> | <a href="deletemsg.php?msgid=<?php echo $result['id'] ?>">Delete</a></td>
+                                    <td><a href="viewmsg.php?id=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?id=<?php echo $result['id'] ?>">Reply</a> | <a href="?seen=<?php echo $result['id'] ?>">Seen</a> | <a onclick="confirm('Are you sure ?')"; href="delmsg.php?msgid=<?php echo $result['id'] ?>">Delete</a></td>
                                 </tr>
                             <?php }} ?>
                         </tbody>
@@ -168,7 +170,7 @@ if (isset($_GET['unseen']) && $_GET['unseen'] != '') {
                                     <td><?php echo $result['email']; ?></td>
                                     <td><?php echo $fm->textShorten($result['text']); ?></td>
                                     <td><?php echo $fm->formatDate($result['date']);?></td>
-                                    <td><a href="viewmsg.php?id=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?id=<?php echo $result['id'] ?>">Reply</a> | <a href="?unseen=<?php echo $result['id'] ?>">Unseen</a> | <a href="deletemsg.php?msgid=<?php echo $result['id'] ?>">Delete</a></td>
+                                    <td><a href="viewmsg.php?id=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?id=<?php echo $result['id'] ?>">Reply</a> | <a href="?unseen=<?php echo $result['id'] ?>">Unseen</a> | <a onclick="confirm('Are you sure ?')" href="delmsg.php?msgid=<?php echo $result['id'] ?>">Delete</a></td>
                                 </tr>
                             <?php }} ?>
                         </tbody>
