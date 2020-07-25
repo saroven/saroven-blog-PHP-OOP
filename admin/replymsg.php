@@ -2,7 +2,6 @@
 include 'inc/header.php';
 include 'inc/sidebar.php';
 
-print_r($_POST);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $subject = $fm->validation($_POST['subject']);
       $toemail = $fm->validation($_POST['email']);

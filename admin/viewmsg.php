@@ -15,6 +15,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     goToUrl('inbox.php');
 }
 
+
+    $query = "UPDATE contacts SET status = 1 WHERE id = $id;";
+
+    $result = $db->update($query);
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->

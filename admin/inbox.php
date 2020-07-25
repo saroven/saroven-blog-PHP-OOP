@@ -1,6 +1,33 @@
 <?php
 include 'inc/header.php';
 include 'inc/sidebar.php';
+    
+if (isset($_GET['seen']) && $_GET['seen'] != '') {
+
+    $id = $_GET['seen'];
+    $query = "UPDATE contacts SET status = 1 WHERE id = $id;";
+
+    $result = $db->update($query);
+    if ($result) {
+        $_SESSION['success'] = 'Moved to seen message';
+    }else{
+        $_SESSION['error'] = 'Something Went Wrong!';
+    }
+}
+
+if (isset($_GET['unseen']) && $_GET['unseen'] != '') {
+
+    $id = $_GET['unseen'];
+    $query = "UPDATE contacts SET status = 0 WHERE id = $id;";
+
+    $result = $db->update($query);
+    if ($result) {
+        $_SESSION['success'] = 'Moved to Unseen message';
+    }else{
+        $_SESSION['error'] = 'Something Went Wrong!';
+    }
+}
+
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -53,7 +80,7 @@ include 'inc/sidebar.php';
         <div class="box">
             <div class="box-header">
                 <?php include '../helper/message.php';?>
-                <h3 class="box-title">Message Lists</h3>
+                <h3 class="box-title">Unseen Messages</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -71,7 +98,7 @@ include 'inc/sidebar.php';
                     </thead>
                     <tbody>
                         <?php
-                        $query = "SELECT * FROM contacts ORDER BY id DESC";
+                        $query = "SELECT * FROM contacts WHERE status=0 ORDER BY id DESC";
                         $contact = $db->select($query);
                         if ($contact) {
                             $i = 0;
@@ -106,8 +133,64 @@ include 'inc/sidebar.php';
             </div>
         </div>
         <!-- /.box -->
+         <div class="box">
+            <div class="box-header">
+                <?php include '../helper/message.php';?>
+                <h3 class="box-title">Seen Messages</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Sender Name</th>
+                            <th>Subject</th>
+                            <th>Sender Email</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $query = "SELECT * FROM contacts WHERE status=1 ORDER BY id DESC";
+                        $contact = $db->select($query);
+                        if ($contact) {
+                            $i = 0;
+                            while ($result = $contact->fetch_assoc()) {
+                                $i++;
+                                ?>
+                                <tr>
+                                    <td><?php echo $i; ?></td>
+                                    <td><?php echo $result['name']; ?></td>
+                                    <td><?php echo $result['subject']; ?></td>
+                                    <td><?php echo $result['email']; ?></td>
+                                    <td><?php echo $fm->textShorten($result['text']); ?></td>
+                                    <td><?php echo $fm->formatDate($result['date']);?></td>
+                                    <td><a href="viewmsg.php?id=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?id=<?php echo $result['id'] ?>">Reply</a> | <a href="?unseen=<?php echo $result['id'] ?>">Unseen</a> | <a href="deletemsg.php?msgid=<?php echo $result['id'] ?>">Delete</a></td>
+                                </tr>
+                            <?php }} ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Sender Name</th>
+                                <th>Subject</th>
+                                <th>Sender Email</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </div>
     </div>
     <!-- /.col -->
+
 </div>
 <!-- /.row -->
 </section>
