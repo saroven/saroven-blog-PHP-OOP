@@ -45,6 +45,20 @@ if (isset($_GET['pageid']) && $_GET['pageid'] != null) {
             <title><?php echo $fm->getTitle(); ?> - <?php echo TITLE ?></title>
 
           <?php } ?>
+          <?php if (isset($_GET['id'])){
+            $id = $_GET['id'];
+            $query = "SELECT * FROM posts WHERE id='$id'";
+            $keywords = $db->select($query);
+            if ($keywords) {
+              while ($result = $keywords->fetch_assoc()) { ?>
+                  <meta name="keywords" content="<?php echo $result['tags']; ?>">
+              <?php } } }else { ?>
+
+                <meta name="keywords" content="<?php echo KEYWORDS ?>">
+
+          <?php }  ?>
+
+
 	<link rel="icon" href="assets/img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="assets/vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="assets/vendors/fontawesome/css/all.min.css">

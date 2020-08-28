@@ -4,4 +4,5 @@
 	define("DB_PASS", "");
 	define("DB_NAME", "blog_db");
 	define("TITLE", "MyBlog");
+	define("KEYWORDS", "Blog, tutorial, tips, tricks");
  ?>
