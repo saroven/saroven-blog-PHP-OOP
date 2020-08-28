@@ -91,7 +91,16 @@ header("Pragma: no-cache");
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
-              <span class="label label-success">1</span>
+              <?php
+                $query = "SELECT * FROM contacts WHERE status=0 ORDER BY id DESC";
+                $msg = $db->select($query);
+                $count = '';
+                if ($msg) {
+                  $count = mysqli_num_rows($msg);
+                }
+
+              ?>
+              <span class="label label-success"><?php echo $count; ?></span>
             </a>
             <ul class="dropdown-menu">
               <li class="header">You have 1 messages</li>
@@ -99,18 +108,29 @@ header("Pragma: no-cache");
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <!-- start message -->
+                  <?php 
+                    $query = "SELECT * FROM contacts ORDER BY id DESC LIMIT 4";
+                    $messages = $db->select($query);
+                    if ($messages) {
+                      $i = 0;
+                      while ($message = $messages->fetch_assoc()) {
+                          $i++;
+                    ?>
                   <li>
                     <a href="#">
                       <div class="pull-left">
                         <img src="assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                        <?php echo $message['name']; ?>
+                        <small><i class="fa fa-clock-o"></i> <?php echo $fm->timeago($message['date']);?></small>
                       </h4>
-                      <p>Why not buy a new awesome theme?</p>
+                      <p><?php echo $fm->textShorten($message['text']); ?></p>
                     </a>
                   </li>
+
+                  <?php } } ?>
+                  
                   <!-- end message -->
 
                 </ul>
