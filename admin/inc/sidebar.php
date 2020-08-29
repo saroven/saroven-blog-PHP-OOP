@@ -36,6 +36,19 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
+        <li class="treeview nav" id="users">
+          <a href="#">
+            <i class="fa  fa-users"></i>
+            <span>Users</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="nav" id="add-user"><a href="adduser.php"><i class="fa fa-plus"></i> Add</a></li>
+            <li class="nav" id="view-user"><a href="viewuser.php"><i class="fa fa-circle-o"></i> View</a></li>
+          </ul>
+        </li>
         <li class="treeview nav" id="site-option">
           <a href="#">
             <i class="fa  fa-cogs"></i>
