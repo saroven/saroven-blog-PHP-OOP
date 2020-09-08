@@ -167,7 +167,7 @@ header("Pragma: no-cache");
               <li class="user-footer">
                 <div class="row">
                   <div class="col-xs-4">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="col-xs-4">
                   <a href="inbox.php" class="btn btn-default btn-flat">Inbox</a>
