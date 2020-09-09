@@ -2,9 +2,16 @@
 include 'inc/header.php';
 include 'inc/sidebar.php';
 include '../helper/permission_check.php';
+$fm = new Formate();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $fm->validation($_POST['name']);
+    $fm->validation($_POST['email']);
+    $fm->validation($_POST['gender']);
+    $fm->validation($_POST['role_id']);
+    $fm->validation($_POST['birthday']);
+
     $name = $db->link->real_escape_string($_POST['name']);
     $email = $db->link->real_escape_string($_POST['email']);
     $gender = $db->link->real_escape_string($_POST['gender']);
@@ -12,15 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $role = $db->link->real_escape_string($_POST['role_id']);
     $birthday = date('Y-m-d',  strtotime($_POST['birthday']));
 
-    if ($name == "" || $email == "" || $gender == "" || $birthday == "" || $password == "" || $role == "") {
-        $_SESSION['error'] = "Field can not be empty!";
+    $query = "SELECT * FROM users WHERE email= '$email'";
+    $mailcheck = $db->select($query);
+    if ($mailcheck) {
+        $_SESSION['error'] = "Email Already exist! Try difrent one.";
+        
     }else{
-        $query = "INSERT INTO users(name, email, gender, birthday, password, role_id) VALUES('$name', '$email', '$gender', '$birthday', '$password', '$role')";
-        $inserted_rows = $db->insert($query);
-        if ($inserted_rows) {
-            $_SESSION['success'] = "User created Successfully.";
-        }else {
-            $_SESSION['error'] = " User not created!";
+        if ($name == "" || $email == "" || $gender == "" || $birthday == "" || $password == "" || $role == "") {
+            $_SESSION['error'] = "Field can not be empty!";
+        }else{
+            $query = "INSERT INTO users(name, email, gender, birthday, password, role_id) VALUES('$name', '$email', '$gender', '$birthday', '$password', '$role')";
+            $inserted_rows = $db->insert($query);
+            if ($inserted_rows) {
+                $_SESSION['success'] = "User created Successfully.";
+            }else {
+                $_SESSION['error'] = " User not created!";
+            }
         }
     }
 } ?>
