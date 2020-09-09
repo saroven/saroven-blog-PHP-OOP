@@ -42,7 +42,7 @@
                                     <th>Author</th>
                                     <th>Tags</th>
                                     <th>Date</th>
-                                    <th>Action</th>
+                                    <th width="85px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,17 +78,18 @@
                                     <?php if ($role_id == "3" && $post['author'] == $userid) { ?>
 
                                         <a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a>
-                                         |
+                                         |<a href="/post.php?id=<?php echo $post['id'] ?>" target="_blank">View</a> |
                                         <a onclick="return confirm('Are you sure?');" href="deletepost.php?id=<?php echo $post['id']; ?>">Delete</a>
-
-                                    <?php } ?>
-
-                                    <!-- this condition is for admin and editor -->
-
-                                    <?php if ($role_id == "1" || $role_id == "2") {?>
+                                        <!-- this condition is for admin and author -->
+                                    <?php }elseif ($role_id == "1") {?>
                                         <a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a>
-                                         |
+                                         |<a href="/post.php?id=<?php echo $post['id'] ?>" target="_blank">View</a> |
                                         <a onclick="return confirm('Are you sure?');" href="deletepost.php?id=<?php echo $post['id']; ?>">Delete</a>
+                                    <?php }elseif($role_id == "2") { ?> 
+                                        <a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a>
+                                         |<a href="/post.php?id=<?php echo $post['id'] ?>" target="_blank">View</a>
+                                    <?php }else{ ?>
+                                    <a href="/post.php?id=<?php echo $post['id'] ?>" target="_blank">View</a>
                                     <?php } ?>
 
                                     </td>

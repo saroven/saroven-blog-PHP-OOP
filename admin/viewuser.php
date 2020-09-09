@@ -69,8 +69,11 @@
                                         <?php $status = $user['status']; ?>
                                         <td><?php if ($status == 1) {echo "Active";}else {echo "Deactive"; } ?></td>
                                         <td><a href="edituser.php?id=<?php echo $user['id'] ?>">Edit</a>
-                                         |
-                                        <a onclick="return confirm('Are you sure?');" href="deleteuser.php?id=<?php echo $user['id']; ?>">Delete</a></td>
+
+                                    <?php if (Session::get('role_id') == 1) {?>
+                                         |<a onclick="return confirm('Are you sure?');" href="deleteuser.php?id=<?php echo $user['id']; ?>">Delete</a>
+                                     <?php } ?>
+                                     </td>
                                     </tr>
                                         <?php }} ?>
                             </tbody>

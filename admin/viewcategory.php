@@ -73,7 +73,12 @@ include '../helper/permission_check.php';
                                 <tr>
                                     <td><?php echo $i; ?></td>
                                     <td><?php echo $result['title']; ?></td>
-                                    <td><a href="editcategory.php?id=<?php echo $result['id']; ?>">Edit</a> | <a onclick="return confirm('Are You Sure?')" href="viewcategory.php?delcat=<?php echo $result['id']; ?>">Delete</a></td>
+                                    <td>
+                                        <a href="editcategory.php?id=<?php echo $result['id']; ?>">Edit</a>
+                                    <?php if (Session::get('role_id') == 1) {?>
+                                         | <a onclick="return confirm('Are You Sure?')" href="viewcategory.php?delcat=<?php echo $result['id']; ?>">Delete</a>
+                                     <?php } ?>
+                                    </td>
                                 </tr>
 
                             <?php } } ?>

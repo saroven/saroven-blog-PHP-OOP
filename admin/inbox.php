@@ -115,7 +115,11 @@ if (isset($_GET['unseen']) && $_GET['unseen'] != '') {
                                     <td><?php echo $result['email']; ?></td>
                                     <td><?php echo $fm->textShorten($result['text']); ?></td>
                                     <td><?php echo $fm->formatDate($result['date']);?></td>
-                                    <td><a href="viewmsg.php?id=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?id=<?php echo $result['id'] ?>">Reply</a> | <a href="?seen=<?php echo $result['id'] ?>">Seen</a> | <a onclick="confirm('Are you sure ?')"; href="delmsg.php?msgid=<?php echo $result['id'] ?>">Delete</a></td>
+                                    <td><a href="viewmsg.php?id=<?php echo $result['id'] ?>">View</a> | <a href="replymsg.php?id=<?php echo $result['id'] ?>">Reply</a> | <a href="?seen=<?php echo $result['id'] ?>">Seen</a>
+                                   <?php if (Session::get('role_id') == 1) { ?>
+                                     | <a onclick="confirm('Are you sure ?')"; href="delmsg.php?msgid=<?php echo $result['id'] ?>">Delete</a>
+                                   <?php } ?>
+                                    </td>
                                 </tr>
                             <?php }} ?>
                         </tbody>

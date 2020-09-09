@@ -87,7 +87,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Update</button>
                             <a class="btn btn-info" href="#">View</a>
+                        <?php if (Session::get('role_id') == 1) {?>
                             <a onclick="return confirm('Are You Sure?');" class="btn btn-danger" href="delpage.php?id=<?php echo $page['id']; ?>">Delete</a>
+                        <?php } ?>
                         </div>
                     </form>
                 </div>
