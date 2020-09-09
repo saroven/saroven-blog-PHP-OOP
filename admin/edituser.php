@@ -19,7 +19,7 @@ if (isset($_GET['id']) && $_GET['id'] != null) {
                     $email = $db->link->real_escape_string($_POST['email']);
                     $gender = $db->link->real_escape_string($_POST['gender']);
                     $role = $db->link->real_escape_string($_POST['role_id']);
-                    $birthday = $_POST['birthday'];
+                    $birthday = date('Y-m-d',  strtotime($_POST['birthday']));
 
                     if ($name == "" || $email == "" || $gender == "" || $birthday == "" || $role == "") {
                         $_SESSION['error'] = "Field can not be empty!";

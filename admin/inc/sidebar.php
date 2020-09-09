@@ -37,6 +37,7 @@
           </a>
         </li>
       <?php $userole = Session::get('role_id'); ?>
+      
       <?php if ($userole == 1) { ?>
         <li class="treeview nav" id="users">
           <a href="#">

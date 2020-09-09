@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $gender = $db->link->real_escape_string($_POST['gender']);
     $password = $db->link->real_escape_string(md5($_POST['password']));
     $role = $db->link->real_escape_string($_POST['role_id']);
-    $birthday = $_POST['birthday'];
+    $birthday = date('Y-m-d',  strtotime($_POST['birthday']));
 
     if ($name == "" || $email == "" || $gender == "" || $birthday == "" || $password == "" || $role == "") {
         $_SESSION['error'] = "Field can not be empty!";

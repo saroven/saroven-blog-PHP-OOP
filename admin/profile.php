@@ -11,10 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $db->link->real_escape_string($_POST['name']);
     $email = $db->link->real_escape_string($_POST['email']);
     $gender = $db->link->real_escape_string($_POST['gender']);
-    $role = $db->link->real_escape_string($_POST['role_id']);
-    $birthday = $_POST['birthday'];
+    $birthday = date('Y-m-d',  strtotime($_POST['birthday']));
 
-    if ($name == "" || $email == "" || $gender == "" || $birthday == "" || $role == "") {
+    if ($name == "" || $email == "" || $gender == "" || $birthday == "") {
         $_SESSION['error'] = "Field can not be empty!";
     }else{
 
@@ -23,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 name = '$name',
                 email = '$email',
                 gender = '$gender',
-                birthday = '$birthday',
-                role_id = '$role_id'
+                birthday = '$birthday'
                 WHERE id = '$userid'";
         }else{
             $password = $db->link->real_escape_string(md5($_POST['password']));
@@ -33,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 email = '$email',
                 gender = '$gender',
                 birthday = '$birthday',
-                role_id = '$role_id',
                 password = '$password'
                 WHERE id = '$userid'";
         }
@@ -99,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" value="<?php echo $user['birthday']; ?>" name="birthday" class="form-control pull-right" id="datepicker">
+                                        <input type="text" name="birthday" value="<?php echo $user['birthday']; ?>" class="form-control pull-right" id="datepicker">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -115,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                             <div class="form-group mb-5">
                                 <label for="role">User Role</label>
-                                <select name="role_id" id="role" class="form-control">
+                                <select disabled="true" name="role_id" id="role" class="form-control">
                                     <option value="">Select Role</option>
                                         <option value="1" <?php if ($user['role_id'] == 1) {echo "selected";} ?>>Admin</option>
                                         <option value="2" <?php if ($user['role_id'] == 2) {echo "selected";} ?>>Editor</option>
