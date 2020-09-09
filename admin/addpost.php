@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $db->link->real_escape_string($_POST['title']);
     $category = $db->link->real_escape_string($_POST['category']);
     $date = $db->link->real_escape_string($_POST['date']);
+    $date = $db->link->real_escape_string($_POST['date']);
     $tags = $db->link->real_escape_string($_POST['tags']);
     $content = $db->link->real_escape_string($_POST['content']);
 
