@@ -175,7 +175,9 @@ header("Pragma: no-cache");
                   <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="col-xs-4">
+                  <?php if (Session::get('role_id') == 1 || Session::get('role_id') == 2): ?>
                   <a href="inbox.php" class="btn btn-default btn-flat">Inbox</a>
+                  <?php endif ?>
                 </div>
                 <div class="col-xs-4">
                   <a href="?action=logout" class="btn btn-default btn-flat">Sign out</a>
