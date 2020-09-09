@@ -91,6 +91,7 @@ header("Pragma: no-cache");
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
+          <?php if (Session::get('role_id') == 1 || Session::get('role_id') == 2) {?>
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-envelope-o"></i>
@@ -141,6 +142,7 @@ header("Pragma: no-cache");
               <li class="footer"><a href="inbox.php">See All Messages</a></li>
             </ul>
           </li>
+        <?php } ?>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

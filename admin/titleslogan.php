@@ -1,6 +1,7 @@
 <?php
     include 'inc/header.php';
     include 'inc/sidebar.php';
+    include '../helper/permission_check.php';
 
     $query = "SELECT * FROM title_slogan WHERE id=1";
     $result = $db->select($query);

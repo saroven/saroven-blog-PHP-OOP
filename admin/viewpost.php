@@ -66,9 +66,32 @@
                                         <td><?php echo $post['name']; ?></td>
                                         <td><?php echo $post['tags']; ?></td>
                                         <td><?php echo $fm->formatDate($post['date']); ?></td>
-                                        <td><a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a>
+                                        <td>
+                                    <?php 
+
+                                    $role_id = Session::get('role_id');
+                                    $userid = Session::get('userid');
+
+                                    ?>
+                                    <!-- this condition is for author -->
+                                    
+                                    <?php if ($role_id == "3" && $post['author'] == $userid) { ?>
+
+                                        <a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a>
                                          |
-                                        <a onclick="return confirm('Are you sure?');" href="deletepost.php?id=<?php echo $post['id']; ?>">Delete</a></td>
+                                        <a onclick="return confirm('Are you sure?');" href="deletepost.php?id=<?php echo $post['id']; ?>">Delete</a>
+
+                                    <?php } ?>
+
+                                    <!-- this condition is for admin and editor -->
+
+                                    <?php if ($role_id == "1" || $role_id == "2") {?>
+                                        <a href="editpost.php?id=<?php echo $post['id'] ?>">Edit</a>
+                                         |
+                                        <a onclick="return confirm('Are you sure?');" href="deletepost.php?id=<?php echo $post['id']; ?>">Delete</a>
+                                    <?php } ?>
+
+                                    </td>
                                     </tr>
                                         <?php }} ?>
                             </tbody>

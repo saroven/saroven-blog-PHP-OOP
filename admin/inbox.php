@@ -3,6 +3,7 @@
 
 include 'inc/header.php';
 include 'inc/sidebar.php';
+include '../helper/permission_check.php';
     
 if (isset($_GET['seen']) && $_GET['seen'] != '') {
 

@@ -38,7 +38,7 @@
         </li>
       <?php $userole = Session::get('role_id'); ?>
       
-      <?php if ($userole == 1) { ?>
+      <?php if ($userole == 1 || $userole == 2) { ?>
         <li class="treeview nav" id="users">
           <a href="#">
             <i class="fa  fa-users"></i>
@@ -102,6 +102,9 @@
             <li class="nav" id="view-category"><a href="viewcategory.php"><i class="fa fa-square"></i> View Categories</a></li>
           </ul>
         </li>
+
+       <?php } ?>
+       
         <li class="treeview nav" id="post">
           <a href="#">
             <i class="fa fa-pencil"></i>
@@ -115,11 +118,7 @@
             <li class="nav" id="view-post"><a href="viewpost.php"><i class="fa fa-square"></i> View Posts</a></li>
           </ul>
         </li>
-      <?php }elseif ($userole == 2) {
-        echo "editor";
-      }elseif ($userole == 3) {
-        echo "Author";
-      } ?>
+
       </ul>
     </section>
     <!-- /.sidebar -->

@@ -2,6 +2,7 @@
  include '../helper/functions.php';
  include '../lib/Session.php';
  Session::checkSession();
+ include '../helper/permission_check.php';
  ?>
  <?php
  include '../config/config.php';

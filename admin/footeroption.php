@@ -2,6 +2,7 @@
 <?php
     include 'inc/header.php';
     include 'inc/sidebar.php';
+    include '../helper/permission_check.php';
  ?>
 <?php
     $query = "SELECT * FROM footer WHERE id=1";
