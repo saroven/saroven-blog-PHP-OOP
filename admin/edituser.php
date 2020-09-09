@@ -10,11 +10,11 @@ if (isset($_GET['id']) && $_GET['id'] != null) {
         if($result == '') {
             $_SESSION['error'] = "User not found!";
             goToUrl('viewuser.php');
-        }else{
-                $query = "SELECT * FROM users WHERE id='$id'";
-                $getuser = $db->select($query);
 
+        }else{
+                
                 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                 
                     $name = $db->link->real_escape_string($_POST['name']);
                     $email = $db->link->real_escape_string($_POST['email']);
                     $gender = $db->link->real_escape_string($_POST['gender']);
@@ -31,8 +31,8 @@ if (isset($_GET['id']) && $_GET['id'] != null) {
                                 email = '$email',
                                 gender = '$gender',
                                 birthday = '$birthday',
-                                role_id = '$role_id'
-                                WHERE id = '$userid'";
+                                role_id = '$role'
+                                WHERE id = '$id'";
                         }else{
                             $password = $db->link->real_escape_string(md5($_POST['password']));
                             $query ="UPDATE users SET
@@ -40,15 +40,15 @@ if (isset($_GET['id']) && $_GET['id'] != null) {
                                 email = '$email',
                                 gender = '$gender',
                                 birthday = '$birthday',
-                                role_id = '$role_id',
+                                role_id = '$role',
                                 password = '$password'
-                                WHERE id = '$userid'";
+                                WHERE id = '$id'";
                             }
 
                         $updated_rows = $db->update($query);
                         if ($updated_rows) {
                             $_SESSION['success'] = "User Updated Successfully.";
-                            goToUrl('profile.php');
+                            goToUrl('viewuser.php');
                         }else {
                             $_SESSION['error'] = "User Not Updated!";
                     }
@@ -79,10 +79,12 @@ if (isset($_GET['id']) && $_GET['id'] != null) {
                 <div class="box box-primary">
                     <!-- form start -->
                     <?php
-                        if ($getuser) {
-                            while ($user = $getuser->fetch_assoc()) {
+                    $query = "SELECT * FROM users WHERE id='$id'";
+                    $getuser = $db->select($query);
+                    if ($getuser) {
+                        while ($user = $getuser->fetch_assoc()) {
                      ?>
-                    <form role="form" action="profile.php" method="post" enctype="multipart/form-data">
+                    <form role="form" action="edituser.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
