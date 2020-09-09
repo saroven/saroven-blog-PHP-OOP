@@ -66,6 +66,7 @@
           if ($row > 0) {
             Session::set("login", true);
             Session::set("userid", $value['id']);
+            Session::set("name", $value['name']);
             Session::set("email", $value['email']);
             Session::set("role_id", $value['role_id']);
             header('Location: index.php');
