@@ -6,7 +6,7 @@
     if (!isset($_GET['q']) || $_GET['q'] == null) {
         header("Location: 404.php");
     }else {
-        $search = $_GET['q'];
+      $search = $db->link->real_escape_string($_GET['q']);
     }
 
   $sql = "SELECT * FROM posts WHERE title LIKE '%$search%' OR content LIKE '%$search%'";

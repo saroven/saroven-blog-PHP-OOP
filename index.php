@@ -6,7 +6,9 @@
 
 
 <!-- pagination -->
+
   <?php
+ 
     $per_page = 2;
     if (isset($_GET['page'])) {
       $page = $_GET['page'];

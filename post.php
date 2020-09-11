@@ -7,7 +7,7 @@
     if (!isset($_GET['id']) || $_GET['id'] == null) {
         header("Location: 404.php");
     }else {
-        $id = $_GET['id'];
+         $id = $db->link->real_escape_string($_GET['id']);
     }
 
     $query = "SELECT Posts.*, users.name FROM posts INNER JOIN users ON posts.author = users.id WHERE posts.id= '$id'";

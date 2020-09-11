@@ -6,7 +6,7 @@
     if (!isset($_GET['category']) || $_GET['category'] == null) {
         header("Location: 404.php");
     }else {
-        $category = $_GET['category'];
+      $category = $db->link->real_escape_string($_GET['category']);
     }
 
   $sql = "select * from posts where cat=$category";
